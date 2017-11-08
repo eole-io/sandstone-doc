@@ -1,0 +1,18 @@
+---
+layout: base
+---
+
+{% include nav-top.html %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="sticky-nav">
+                {% include nav-left.html %}
+            </div>
+        </div>
+        <main class="col-sm-9 col-lg-6">
+            {{ content }}
+        </main>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+{
+    "require": {
+        "eole/sandstone": "2.0.x"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}
