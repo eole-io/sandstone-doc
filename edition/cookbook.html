@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Sandstone Edition Cookbook</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/sandstone/css/bootstrap4-sandstone.min.css">
+        <link rel="stylesheet" href="/sandstone/css/prism.css">
+        <link rel="stylesheet" href="/sandstone/css/all.css">
+    </head>
+    <body>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/sandstone/">Sandstone</a>
+
+    <a
+        href="https://github.com/eole-io/sandstone"
+        class="github-button"
+        aria-label="Star eole-io/sandstone on GitHub"
+        data-count-aria-label="# stargazers on GitHub"
+        data-count-api="/repos/eole-io/sandstone#stargazers_count"
+        data-count-href="/eole-io/sandstone/stargazers"
+        data-style="mega"
+    >Star Sandstone</a>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="sticky-nav">
+                <nav class="nav-left">
+    <h3 class="no-margin-top">Sandstone</h2>
+
+    <ul class="nav flex-column">
+        <li class="nav-item 
+">
+            <a href="/sandstone/get-started" class="nav-link text-muted">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                Get started
+                <br>
+                <span>Introduction + Basic usage</span>
+            </a>
+        </li>
+        <li class="nav-item 
+">
+            <a href="/sandstone/examples/full" class="nav-link text-muted">
+                <i class="fa fa-code" aria-hidden="true"></i>
+                Example: Full app
+                <br>
+                <span>RestApi + Websocket + Push</span>
+            </a>
+        </li>
+        <li class="nav-item 
+">
+            <a href="/sandstone/examples/multichannel-chat" class="nav-link text-muted">
+                <i class="fa fa-code" aria-hidden="true"></i>
+                Example: Chat server
+                <br>
+                <span>Websocket</span>
+            </a>
+        </li>
+        <li class="nav-item 
+">
+            <a href="/sandstone/authentication" class="nav-link text-muted">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                Authentication
+                <br>
+                <span>Rest API + websocket connections</span>
+            </a>
+        </li>
+        <li class="nav-item 
+">
+            <a href="/sandstone/topic-route-parameters" class="nav-link text-muted">
+                <i class="fa fa-sitemap" aria-hidden="true"></i>
+                Topic route parameters
+                <br>
+                <span>Retrieve topic route arguments</span>
+            </a>
+        </li>
+        <li class="nav-item 
+">
+            <a href="/sandstone/websocket-events" class="nav-link text-muted">
+                <i class="fa fa-wifi" aria-hidden="true"></i>
+                Listen websocket events
+                <br>
+                <span>onOpen, onClose, onPublish...</span>
+            </a>
+        </li>
+        <li class="nav-item 
+">
+            <a href="/sandstone/push-debug-profiler" class="nav-link text-muted">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                Push debug profiler
+                <br>
+                <span>Enable that awesome debug tool !</span>
+            </a>
+        </li>
+        <li class="nav-item 
+">
+            <a href="/sandstone/big-picture" class="nav-link text-muted">
+                <i class="fa fa-picture-o" aria-hidden="true"></i>
+                Big picture
+                <br>
+                <span>Sandstone full schema</span>
+            </a>
+        </li>
+        <li class="nav-item 
+">
+            <a href="/sandstone/under-the-hood" class="nav-link text-muted">
+                <i class="fa fa-cogs" aria-hidden="true"></i>
+                Under the hood
+                <br>
+                <span>Used libraries</span>
+            </a>
+        </li>
+        <li class="nav-item 
+">
+            <a href="/sandstone/install-zmq-php-linux" class="nav-link text-muted">
+                <i class="fa fa-archive" aria-hidden="true"></i>
+                ZMQ Linux installation
+                <br>
+                <span>and php binding</span>
+            </a>
+        </li>
+    </ul>
+
+    <h3>Sandstone Edition</h2>
+
+
+    <ul class="nav flex-column">
+        <li class="nav-item 
+">
+            <a href="/sandstone/edition/get-started" class="nav-link text-muted">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                Get started
+                <br>
+                <span>Introduction + Installation</span>
+            </a>
+        </li>
+        <li class="nav-item active
+">
+            <a href="/sandstone/edition/cookbook" class="nav-link text-muted">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                Cookbook
+                <br>
+                <span>Usage + API + Real time</span>
+            </a>
+        </li>
+    </ul>
+
+    <h3>Community</h2>
+</nav>
+
+            </div>
+        </div>
+        <main class="col-sm-9 col-lg-6">
+            <h2 class="no-margin-top">Cookbook</h2>
+
+<p>Once you have a running installation of Sandstone,
+you can start to build your real-time RestApi.</p>
+
+<p>That means creating API endpoints, websocket topics…</p>
+
+<h3 id="creating-an-api-endpoint">Creating an API endpoint</h3>
+
+<p>As Sandstone extends Silex, just create a controller class and a method, then mount it with Silex.</p>
+
+<p>Also, this edition allows to use <strong>annotations</strong> for routing.</p>
+
+<p>In <strong>src/App/Controller/HelloController.php</strong>:</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>namespace App\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+use DDesrosiers\SilexAnnotations\Annotations as SLX;
+use Alcalyn\SerializableApiResponse\ApiResponse;
+
+/**
+ * @SLX\Controller(prefix="/api")
+ */
+class HelloController
+{
+    /**
+     * Test endpoint which returns a hello world.
+     *
+     * @SLX\Route(
+     *      @SLX\Request(method="GET", uri="hello/{name}"),
+     *      @SLX\Value(variable="name", default="world")
+     * )
+     *
+     * @param string $name
+     *
+     * @return ApiResponse
+     */
+    public function getHello($name)
+    {
+        $result = [
+            'hello' =&gt; $name,
+        ];
+
+        return new ApiResponse($result, Response::HTTP_OK);
+    }
+}
+</code></pre>
+</div>
+
+<blockquote>
+  <p><strong>Note</strong>: Using <code class="highlighter-rouge">ApiResponse</code> allows to make your controllers return a non-yet-serialized object
+(see <a href="https://github.com/alcalyn/serializable-api-response">alcalyn/serializable-api-response</a>).</p>
+
+  <p>Sandstone transforms the <code class="highlighter-rouge">ApiResponse</code> to a Symfony <code class="highlighter-rouge">Response</code> only at the very end, after serialization.</p>
+</blockquote>
+
+<p><em>Related documentation</em>:</p>
+
+<ul>
+  <li><a href="https://github.com/danadesrosiers/silex-annotation-provider">danadesrosiers/Silex annotations</a></li>
+  <li><a href="http://silex.sensiolabs.org/doc/2.0/usage.html#routing">Silex routing</a></li>
+  <li><a href="https://github.com/alcalyn/serializable-api-response">ApiResponse</a></li>
+</ul>
+
+<h3 id="creating-a-websocket-topic">Creating a websocket topic</h3>
+
+<p>A websocket topic is like a “category”, or a “channel” of communication.
+It allows to listen to messages from a same “channel”,
+without receiving all others messages from the websocket server.</p>
+
+<p>Technically, each topic has its own <code class="highlighter-rouge">Topic</code> class,
+which contains its own logic.</p>
+
+<p>Under Sandstone, a topic has a name (i.e <code class="highlighter-rouge">chat/general</code>) and can be declared like a route.</p>
+
+<h4 id="creating-the-topic-class">Creating the topic class</h4>
+
+<p>In <strong>src/App/Topic/ChatTopic.php</strong>:</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>namespace App\Topic;
+
+use Ratchet\Wamp\WampConnection;
+use Eole\Sandstone\Websocket\Topic;
+
+class ChatTopic extends Topic
+{
+    /**
+     * Broadcast message to each subscribing client.
+     *
+     * {@InheritDoc}
+     */
+    public function onPublish(WampConnection $conn, $topic, $event)
+    {
+        $this-&gt;broadcast([
+            'message' =&gt; $event,
+        ]);
+    }
+}
+</code></pre>
+</div>
+
+<h4 id="register-the-topic">Register the topic</h4>
+
+<p>In <strong>app/WebsocketApplication.php</strong>:</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>use App\Topic\ChatTopic;
+
+private function registerUserProviders()
+{
+    $this-&gt;topic('chat/{channel}', function ($topicPattern) {
+        return new ChatTopic($topicPattern);
+    });
+}
+</code></pre>
+</div>
+
+<p>Then you can now subscribe to <code class="highlighter-rouge">chat/general</code>, <code class="highlighter-rouge">chat/private</code>, <code class="highlighter-rouge">chat/whatever</code>, …</p>
+
+<p>Sandstone <code class="highlighter-rouge">Topic</code> class extends <code class="highlighter-rouge">Ratchet\Wamp\Topic</code>,
+which is based on Wamp protocol.</p>
+
+<p>Note that you can use all Silex route configuration like:</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>$this
+    -&gt;topic('chat/{channel}', function ($topicPattern) {
+        return new ChatTopic($topicPattern);
+    })
+    -&gt;value('channel', 'general')                   // Set a default channel name in case someone subscribes to `chat`
+    -&gt;assert('channel', '[a-z]')                    // Add constraint on channel name, only lowercases
+    -&gt;convert('channel', function () { /* ... */ }) // Add a converter on channel name
+;
+</code></pre>
+</div>
+
+<blockquote>
+  <p><strong>Note</strong>: You can’t use <code class="highlighter-rouge">-&gt;method('get')</code> or <code class="highlighter-rouge">-&gt;requireHttps()</code> for a topic route ;)</p>
+</blockquote>
+
+<h4 id="retrieve-route-arguments-from-topic-name">Retrieve route arguments from topic name</h4>
+
+<p>In case your topic name is something like <code class="highlighter-rouge">chat/{channel}</code>
+and you need to pass the <code class="highlighter-rouge"><span class="p">{</span><span class="err">channel</span><span class="p">}</span></code> argument to your Topic class:</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>$this-&gt;topic('chat/{channel}', function ($topicPattern, $arguments) {
+    $channelName = $arguments['channel'];
+
+    return new ChatTopic($topicPattern, $channelName);
+});
+</code></pre>
+</div>
+
+<p><em>Related documentation</em>:</p>
+
+<ul>
+  <li>Silex routing: <a href="http://silex.sensiolabs.org/doc/2.0/usage.html">http://silex.sensiolabs.org/doc/2.0/usage.html</a>.</li>
+  <li>Wamp protocol implementation on RatchetPHP: <a href="http://socketo.me/docs/wamp">http://socketo.me/docs/wamp</a>.</li>
+  <li>Wamp protocol: <a href="http://wamp-proto.org/">http://wamp-proto.org/</a>.</li>
+</ul>
+
+<h3 id="send-a-push-event-from-restapi-to-a-websocket-topic">Send a Push event from RestApi to a websocket topic</h3>
+
+<p>Sometimes you’ll want to notify websocket clients when the RestApi state changes
+(a new resource has been PUT or POSTed, or a resource has been PATCHed…).</p>
+
+<p>Then this part is for you.</p>
+
+<p>The logic here is to dispatch an event from the controller behind i.e <code class="highlighter-rouge">postArticle</code>,
+then this event will be forwarded (i.e redisptached) over the <code class="highlighter-rouge">WebsocketApplication</code>.</p>
+
+<p>Then just listen this event from a topic, and do something like broadcast a message…</p>
+
+<h4 id="dispatch-event-from-controller">1. Dispatch event from controller</h4>
+
+<p>In <strong>src/App/Controller/HelloController.php</strong>:</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>public function getHello($name)
+{
+    $this-&gt;container['dispatcher']-&gt;dispatch(HelloEvent::HELLO, new HelloEvent($name));
+}
+</code></pre>
+</div>
+
+<blockquote>
+  <p><strong>Note</strong>: The <code class="highlighter-rouge">container</code> is passed to your controllers constructors
+if you use the <code class="highlighter-rouge">@SLX\Controller</code> annotation.</p>
+</blockquote>
+
+<h4 id="mark-the-event-to-be-forwarded">2. Mark the event to be forwarded</h4>
+
+<p>In <strong>app/RestApiApplication.php</strong>:</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>use App\Event\HelloEvent;
+
+private function registerUserProviders()
+{
+    $app-&gt;forwardEventToPushServer(HelloEvent::HELLO);
+}
+</code></pre>
+</div>
+
+<blockquote>
+  <p><strong>Note</strong>: This must be done only in RestApi stack.
+If it’s done in websocket stack, the event will be redispatched infinitely to itself!</p>
+</blockquote>
+
+<h4 id="listen-the-event-from-a-topic">3. Listen the event from a topic</h4>
+
+<p>It will listen and receive the event
+that has been serialized/deserialized through the Push server,
+from the RestApi thread to the websocket server thread.</p>
+
+<p>In <strong>src/App/Topic/ChatTopic.php</strong>:</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>namespace App\Topic;
+
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Ratchet\Wamp\WampConnection;
+use Eole\Sandstone\Websocket\Topic;
+use App\Event\HelloEvent;
+
+class ChatTopic extends Topic implements EventSubscriberInterface
+{
+    /**
+     * Subscribe to article.created event.
+     *
+     * {@InheritDoc}
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            HelloEvent::HELLO =&gt; 'onHello',
+        ];
+    }
+
+    /**
+     * Article created listener.
+     *
+     * @param HelloEvent $event
+     */
+    public function onHello(HelloEvent $event)
+    {
+        $this-&gt;broadcast([
+            'message' =&gt; 'Someone called api/hello. Hello '.$event-&gt;getName(),
+        ]);
+    }
+}
+</code></pre>
+</div>
+
+<blockquote>
+  <p><strong>Note</strong>: Sandstone automatically subscribes topics (to the EventDispatcher)
+that implement the <code class="highlighter-rouge">Symfony\Component\EventDispatcher\EventSubscriberInterface</code>.</p>
+</blockquote>
+
+<p>Up to you to create a <code class="highlighter-rouge">HelloEvent</code> class and <strong>create serialization metadata</strong>.</p>
+
+<blockquote>
+  <p><strong>Note</strong>: You need to create serialization metadata for objects that are forwarded.
+It need to be serialized and deserialized around the Push server.</p>
+</blockquote>
+
+<p><em>Related documentation</em>:</p>
+
+<ul>
+  <li><a href="http://symfony.com/doc/current/components/event_dispatcher.html#using-event-subscribers">Symfony EventSubscriber</a></li>
+  <li><a href="https://eole-io.github.io/sandstone/examples/multichannel-chat.html">Sandstone Topic class</a></li>
+  <li><a href="http://jmsyst.com/libs/serializer/master/reference/yml_reference">Serializer metadata Yaml reference</a></li>
+</ul>
+
+<h3 id="doctrine">Doctrine</h3>
+
+<p>Sandstone edition integrates Doctrine:</p>
+
+<ul>
+  <li>Doctrine DBAL and ORM are installed,</li>
+  <li>you can use entities with annotations or yaml mapping, the <code class="highlighter-rouge">orm:schema-tool</code>…</li>
+  <li>Doctrine commands are available under <code class="highlighter-rouge">php bin/console</code></li>
+  <li>Entities serialization is well handled (fixes relations infinite loops). See <a href="https://github.com/alcalyn/serializer-doctrine-proxies">serializer-doctrine-proxies</a>.</li>
+</ul>
+
+<h4 id="creating-an-entity">Creating an entity</h4>
+
+<p>Here using annotations. In <strong>src/App/Entity/Article.php</strong>:</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>namespace App\Entity;
+
+use Doctrine\ORM\Mapping\Entity;
+
+/**
+ * @Entity
+ */
+class Article
+{
+    /**
+     * @var int
+     *
+     * @Id
+     * @Column(type="integer")
+     * @GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @Column(type="string")
+     */
+    private $title;
+
+    /**
+     * @var \DateTime
+     *
+     * @Column(type="datetime")
+     */
+    private $dateCreated;
+
+    // getters and setters...
+}
+</code></pre>
+</div>
+
+<h4 id="serialization-metadata">Serialization metadata</h4>
+
+<p>If your entity is meant to be serialized, which happens in any of these cases:</p>
+
+<ul>
+  <li>rendered in json (or xml, yml…) to the RestApi user</li>
+  <li>sent to the websocket server from the rest api (forwarded)</li>
+</ul>
+
+<p>In <strong>src/App/Resources/serializer/App.Entity.Article.yml</strong>:</p>
+
+<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">App\Entity\Article</span><span class="pi">:</span>
+    <span class="s">exclusion_policy</span><span class="pi">:</span> <span class="s">NONE</span>
+    <span class="s">properties</span><span class="pi">:</span>
+        <span class="s">id</span><span class="pi">:</span>
+            <span class="s">type</span><span class="pi">:</span> <span class="s">integer</span>
+        <span class="s">title</span><span class="pi">:</span>
+            <span class="s">type</span><span class="pi">:</span> <span class="s">string</span>
+        <span class="s">dateCreated</span><span class="pi">:</span>
+            <span class="s">type</span><span class="pi">:</span> <span class="s">DateTime</span>
+</code></pre>
+</div>
+
+<h4 id="updating-the-database">Updating the database</h4>
+
+<p>Use the Doctrine command:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>php bin/console orm:schema-tool:update --force
+</code></pre>
+</div>
+
+<h4 id="retrieve-repository-from-container">Retrieve Repository from container</h4>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>$app['orm.em']-&gt;getRepository('App\\Entity\\Article');
+</code></pre>
+</div>
+
+<p><em>Related documentation</em>:</p>
+
+<ul>
+  <li><a href="http://jmsyst.com/libs/serializer/master/reference/annotations#type">Serializer available <strong>Types</strong></a> (<code class="highlighter-rouge">string</code>, <code class="highlighter-rouge">integer</code>, …)</li>
+  <li><a href="http://jmsyst.com/libs/serializer/master/reference/yml_reference">Serializer metadata Yaml reference</a></li>
+  <li><a href="http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/types.html">Doctrine available <strong>Types</strong></a></li>
+  <li><a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/tools.html">Doctrine commands</a></li>
+</ul>
+
+<h3 id="debugging-with-symfony-web-profiler">Debugging with Symfony web profiler</h3>
+
+<p><a href="https://github.com/silexphp/Silex-WebProfiler">Silex web profiler</a> is already integrated in Sandstone edition.</p>
+
+<p>It is available under <code class="highlighter-rouge">/index-dev.php/_profiler/</code>.</p>
+
+<p>It allows you to debug RestApi requests: exceptions, Doctrine queries, called listeners…</p>
+
+<p>Sandstone also provides a <a href="https://github.com/eole-io/sandstone/releases/tag/1.1.0">Push message debugger</a> (since version <code class="highlighter-rouge">1.1</code>)
+to check which messages has been sent to the websocket stack.</p>
+
+<h3 id="cross-origin">Cross origin</h3>
+
+<p>If your front-end application is <strong>not</strong> hosted under the same domain name
+(i.e <code class="highlighter-rouge">http://localhost</code> for the front-end and <code class="highlighter-rouge">http://localhost:8480</code> for the RestApi),
+then you probably get cross origin errors when trying to query your RestApi using Ajax.</p>
+
+<p>This is a server-side security against XSS attacks.</p>
+
+<p>To fix this issue, you have to configure your RestApi server
+to let him send responses to a precise domain name.</p>
+
+<p>The edition integrates <a href="https://github.com/jdesrosiers/silex-cors-provider">jdesrosiers/silex-cors-provider</a>,
+so you just have to configure it:</p>
+
+<p>In <strong>config/environment.php</strong>, only serve <code class="highlighter-rouge">localhost</code> (if your front-end application is on <code class="highlighter-rouge">localhost</code>):</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>return [
+    'cors' =&gt; [
+        'cors.allowOrigin' =&gt; 'http://localhost',
+    ],
+];
+</code></pre>
+</div>
+
+<p>or to serve <strong>All clients</strong>:</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>return [
+    'cors' =&gt; [
+        'cors.allowOrigin' =&gt; '*',
+    ],
+];
+</code></pre>
+</div>
+
+<h3 id="about-makefile">About Makefile</h3>
+
+<p>The Makefile only works for a Docker installation.</p>
+
+<p><code class="highlighter-rouge">make</code>: Used most of the time, install and run the project. Makes containers started.</p>
+
+<p><code class="highlighter-rouge">make run</code>: Start containers.</p>
+
+<p><code class="highlighter-rouge">make bash</code>: Open a bash session into php container.</p>
+
+<p><code class="highlighter-rouge">make update</code>: Use it to update composer dependencies, rebuild and recreate docker containers.</p>
+
+<p><code class="highlighter-rouge">make logs</code>: display container logs.</p>
+
+<p><code class="highlighter-rouge">make restart_websocket_server</code>: Should be used after the websocket source code changed,
+in example when you develop a websocket topic.</p>
+
+<p><code class="highlighter-rouge">make optimize_autoloader</code>: Optimize composer autoloader and reduce autoloader execution time by ~80%.
+Only use it in prod. Use <code class="highlighter-rouge">make</code> to remove optimization.</p>
+
+<p><code class="highlighter-rouge">make book</code>: Display help (make commands, urls to api, PHPMyAdmin…)</p>
+
+        </main>
+    </div>
+</div>
+
+
+        <footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+                <p>Sandstone is under <a href="https://github.com/eole-io/sandstone/blob/master/LICENSE">MIT license</a>.</p>
+                <br />
+
+                <ul class="list-unstyled">
+                    <li>
+                        <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+                        <a href="https://github.com/eole-io/sandstone">Sandstone</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+                        <a href="https://github.com/eole-io/sandstone-edition">Sandstone edition</a>
+                    </li>
+                </ul>
+                <br />
+
+                <p>
+                    Follow updates and news:
+                    <br />
+                    <a
+                        href="https://twitter.com/sandstone_php"
+                        class="twitter-follow-button"
+                        data-size="large"
+                        data-show-count="false"
+                    >Follow @sandstone_php</a>
+                    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </p>
+                <br />
+
+                <p>
+                    Find me here:
+                    <br />
+                    <a href="https://github.com/alcalyn">
+                        <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+                        alcalyn
+                    </a>
+                    -
+                    <a href="https://twitter.com/alcalyn_">
+                        <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+                        alcalyn_
+                    </a>
+                </p>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class='jekyll-twitter-plugin'><a class="twitter-timeline" data-width="400" data-tweet-limit="2" href="https://twitter.com/sandstone_php?ref_src=twsrc%5Etfw">Tweets by sandstone_php</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/sandstone/js/prism.js"></script>
+    </body>
+</html>

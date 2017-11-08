@@ -1,0 +1,142 @@
+body {
+    font-size: 1rem;
+}
+h4 {
+    font-weight: 500;
+}
+h2 {
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+h3 {
+    margin-top: 45px;
+    margin-bottom: 15px;
+}
+h4 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+    nav.nav-top ul li iframe {
+        margin-top: 6px;
+    }
+}
+@media (min-width: 768px) {
+    nav.nav-top ul li iframe {
+        margin: 16px 16px 0 0;
+    }
+}
+nav.nav-left,
+main {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.sticky-nav {
+    top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+}
+.sticky-nav nav.nav-left {
+    overflow-y: scroll;
+    height: 100vh;
+}
+nav.nav-left {
+    padding-bottom: 2em;
+}
+nav.nav-left .nav-item {
+    margin: 0.25em 0;
+}
+nav.nav-left .nav-item a {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+nav.nav-left .nav-item a:hover {
+    color: #3E3F3A !important;
+}
+nav.nav-left .nav-item.active a {
+    color: #93C54B !important;
+}
+nav.nav-left .nav-item a span {
+    font-weight: 300;
+    font-size: 0.9em;
+}
+
+.navbar {
+    min-height: 4em;
+}
+.navbar .nav > li > a {
+    color: white;
+}
+
+.file {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.08);
+    padding: 6px 16px;
+}
+.no-margin-top {
+    margin-top: 0;
+}
+.jumbotron {
+    font-size: 1em;
+    min-height: 200px;
+    padding: 25px 0;
+    background-image: url("../img/triangles-bg.png");
+    background-color: rgb(121, 167, 54);
+    color: white;
+    text-shadow: 0 0 22px rgba(0, 0, 0, 0.75);
+}
+.jumbotron h1 {
+    font-size: 3em;
+}
+.jumbotron p {
+    font-size: 1em;
+    margin: 1em 0;
+}
+.jumbotron a {
+    font-size: 1em;
+}
+@media (min-width: 768px) {
+    .jumbotron {
+        font-size: 1.5em;
+        min-height: 400px;
+        padding: 75px 0;
+    }
+    .jumbotron a {
+        padding: 0.75em 1.5em;
+    }
+}
+.jumbo-links {
+    display: flex;
+    align-items: center;
+}
+.jumbo-links > *:not(:first-child) {
+    margin-left: 1em;
+}
+.btn-github {
+    background-color: #323131;
+    border-color: rgba(0, 0, 0, 0.5);
+}
+footer {
+    background-color: #f8f5f0;
+    padding: 24px 0 42px 0;
+}
+footer i:before {
+    color: #3e3f3a;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ccc;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 0.33em;
+}
+
+th {
+    background-color: #f5f2f0;
+}
