@@ -7,8 +7,8 @@ bundle exec jekyll build --destination /tmp/sandstone-build/
 cd ..
 
 cd /tmp
-git clone https://github.com/eole-io/sandstone.git
-cd sandstone/
+git clone https://github.com/eole-io/sandstone-doc.git
+cd sandstone-doc/
 
 git config --global user.email "julien.maulny@protonmail.com"
 git config --global user.name "Alcalyn"
