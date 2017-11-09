@@ -4,41 +4,33 @@ body {
 h4 {
     font-weight: 500;
 }
-h2 {
-    margin-top: 60px;
-    margin-bottom: 20px;
+h1, h2, h3, h4 {
+    margin-top: 2em;
+    margin-bottom: 0.75em;
 }
-h3 {
-    margin-top: 45px;
-    margin-bottom: 15px;
+main h1:first-child {
+    margin-top: 0;
 }
-h4 {
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
-@media (max-width: 767px) {
-    nav.nav-top ul li iframe {
-        margin-top: 6px;
-    }
+nav.nav-left :first-child {
+    margin-top: 0;
 }
 @media (min-width: 768px) {
-    nav.nav-top ul li iframe {
-        margin: 16px 16px 0 0;
+    .sticky-nav {
+        top: 4em;
+        position: -webkit-sticky;
+        position: sticky;
+    }
+    .sticky-nav nav.nav-left {
+        overflow-y: scroll;
+        height: calc(100vh - 4em);
     }
 }
+
 nav.nav-left,
-main {
+main,
+#toc {
     padding-top: 2em;
     padding-bottom: 2em;
-}
-.sticky-nav {
-    top: 0;
-    position: -webkit-sticky;
-    position: sticky;
-}
-.sticky-nav nav.nav-left {
-    overflow-y: scroll;
-    height: 100vh;
 }
 nav.nav-left {
     padding-bottom: 2em;
@@ -62,6 +54,9 @@ nav.nav-left .nav-item a span {
     font-size: 0.9em;
 }
 
+.page-container {
+    padding-top: 4em;
+}
 .navbar {
     min-height: 4em;
 }
@@ -70,13 +65,20 @@ nav.nav-left .nav-item a span {
 }
 
 .file {
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.08);
-    padding: 6px 16px;
+    padding: 6px 15px;
+    margin: 0 -15px;
 }
-.no-margin-top {
+.file + div[class*="language-"] pre.highlight {
     margin-top: 0;
+}
+.arrow-up {
+    margin: .5em 0;
+}
+@media (min-width: 768px) {
+    .file {
+        margin: 0;
+    }
 }
 .jumbotron {
     font-size: 1em;
@@ -105,6 +107,18 @@ nav.nav-left .nav-item a span {
     }
     .jumbotron a {
         padding: 0.75em 1.5em;
+    }
+}
+/**
+ * pre code: full width in mobile
+ */
+@media (max-width: 768px) {
+    div[class*="language-"] {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    div.prism-show-language > div.prism-show-language-label {
+        right: 15px;
     }
 }
 .jumbo-links {
@@ -139,4 +153,35 @@ th, td {
 
 th {
     background-color: #f5f2f0;
+}
+
+/**
+ * toc
+ */
+nav[data-toggle='toc'] .nav {
+  flex-direction: column;
+}
+/* small screens */
+@media (max-width: 768px) {
+  /* override the Affix plugin so that the navigation isn't sticky */
+  nav.affix[data-toggle='toc'] {
+    position: static;
+  }
+
+  /* alternatively, if you *do* want the second-level navigation to be shown (as seen on this page on mobile), use this */
+  nav[data-toggle='toc'] .nav .nav {
+    display: block;
+  }
+}
+nav[data-toggle="toc"] .nav > li > a:focus
+nav[data-toggle="toc"] .nav > .active:focus > a,
+nav[data-toggle="toc"] .nav > .active:hover > a,
+nav[data-toggle="toc"] .nav > .active > a {
+    color: #93C54B;
+    border-left: 2px solid #93C54B;
+}
+nav[data-toggle="toc"] .nav > li > a:focus,
+nav[data-toggle="toc"] .nav > li > a:hover {
+    color: #93C54B;
+    border-left: 1px solid #93C54B;
 }

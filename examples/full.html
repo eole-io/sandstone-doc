@@ -5,9 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Full example of websocket application working with a RestApi</title>
+        <title>Sandstone | Full example of websocket application working with a RestApi</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
         <link rel="stylesheet" href="/sandstone-doc/css/bootstrap4-sandstone.min.css">
         <link rel="stylesheet" href="/sandstone-doc/css/prism.css">
@@ -29,12 +30,12 @@
 </nav>
 
 
-<div class="container-fluid">
+<div class="container-fluid page-container">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-md-3 nav-left-container">
             <div class="sticky-nav">
                 <nav class="nav-left">
-    <h3 class="no-margin-top">Sandstone</h2>
+    <h3>Sandstone</h3>
 
     <ul class="nav flex-column">
         <li class="nav-item 
@@ -129,7 +130,7 @@
         </li>
     </ul>
 
-    <h3>Sandstone Edition</h2>
+    <h3>Sandstone Edition</h3>
 
 
     <ul class="nav flex-column">
@@ -152,16 +153,14 @@
             </a>
         </li>
     </ul>
-
-    <h3>Community</h2>
 </nav>
 
             </div>
         </div>
-        <main class="col-sm-9 col-lg-6">
-            <h1 class="no-margin-top">Full example</h1>
+        <main class="col-md-9 col-lg-6">
+            <h1>Full example of websocket application working with a RestApi</h1>
 
-<p>Example of a fully working rest api working together with a websocket server.</p>
+            <p>Example of a fully working rest api working together with a websocket server.</p>
 
 <p>
     <b>Note</b>: there is a Docker image for this example.
@@ -202,14 +201,20 @@
 
 <h2>Installation</h2>
 
-Create your composer.json:
+<p>
+    Create your composer.json:
+</p>
 
 <p class="file">
     <i class="fa fa-file-code-o" aria-hidden="true"></i>
     composer.json
 </p>
 
-<pre><code class="language-json">{
+<div class="language-json highlighter-rouge">
+    <div class="prism-show-language">
+        <div class="prism-show-language-label">json</div>
+    </div>
+    <pre class="highlight language-json"><code class="language-php">{
     "require": {
         "eole/sandstone": "2.0.x"
     },
@@ -220,24 +225,27 @@ Create your composer.json:
     }
 }
 </code></pre>
+</div>
 
 
-Then run <code>composer update</code>.
+<p>
+    Then run <code>composer update</code>.
+</p>
 
 
 <h2>Project structure</h2>
 
-<pre>Silex\Application</pre>
+<pre class="file">Silex\Application</pre>
 
-<p class="text-center">
-    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+<p class="text-center arrow-up">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
 </p>
 
 
-<pre>Eole\Sandstone\Application</pre>
+<pre class="file">Eole\Sandstone\Application</pre>
 
-<p class="text-center">
-    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+<p class="text-center arrow-up">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
 </p>
 
 
@@ -246,7 +254,11 @@ Then run <code>composer update</code>.
     src/MyApp.php
 </p>
 
-<pre><code class="language-php">class MyApp extends Eole\Sandstone\Application
+<div class="language-php highlighter-rouge">
+    <div class="prism-show-language">
+        <div class="prism-show-language-label">php</div>
+    </div>
+    <pre class="highlight language-php"><code class="language-php">class MyApp extends Eole\Sandstone\Application
 {
     public function __construct()
     {
@@ -283,13 +295,14 @@ Then run <code>composer update</code>.
     }
 }
 </code></pre>
+</div>
 
 
 <div class="row">
     <div class="col-sm-6">
         <div class="hidden-xs">
-            <p class="text-center">
-    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+            <p class="text-center arrow-up">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
 </p>
 
         </div>
@@ -299,7 +312,11 @@ Then run <code>composer update</code>.
     rest-api.php
 </p>
 
-        <pre><code class="language-php">require_once 'vendor/autoload.php';
+        <div class="language-php highlighter-rouge">
+    <div class="prism-show-language">
+        <div class="prism-show-language-label">php</div>
+    </div>
+    <pre class="highlight language-php"><code class="language-php">require_once 'vendor/autoload.php';
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -327,12 +344,13 @@ $app->forwardEventToPushServer('article.created');
 
 $app->run();
 </code></pre>
+</div>
 
     </div>
     <div class="col-sm-6">
         <div class="hidden-xs">
-            <p class="text-center">
-    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+            <p class="text-center arrow-up">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
 </p>
 
         </div>
@@ -342,7 +360,11 @@ $app->run();
     websocket-server.php
 </p>
 
-        <pre><code class="language-php">require_once 'vendor/autoload.php';
+        <div class="language-php highlighter-rouge">
+    <div class="prism-show-language">
+        <div class="prism-show-language-label">php</div>
+    </div>
+    <pre class="highlight language-php"><code class="language-php">require_once 'vendor/autoload.php';
 
 $app = new MyApp();
 
@@ -356,6 +378,7 @@ $websocketServer = new Eole\Sandstone\Websocket\Server($app);
 
 $websocketServer->run();
 </code></pre>
+</div>
 
     </div>
 </div>
@@ -392,7 +415,11 @@ $websocketServer->run();
     src/ChatTopic.php
 </p>
 
-<pre><code class="language-php">use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+<div class="language-php highlighter-rouge">
+    <div class="prism-show-language">
+        <div class="prism-show-language-label">php</div>
+    </div>
+    <pre class="highlight language-php"><code class="language-php">use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ChatTopic extends Eole\Sandstone\Websocket\Topic implements EventSubscriberInterface
 {
@@ -435,6 +462,7 @@ class ChatTopic extends Eole\Sandstone\Websocket\Topic implements EventSubscribe
     }
 }
 </code></pre>
+</div>
 
 
 
@@ -462,7 +490,11 @@ class ChatTopic extends Eole\Sandstone\Websocket\Topic implements EventSubscribe
     src/ArticleEvent.php
 </p>
 
-        <pre><code class="language-php">use Symfony\Component\EventDispatcher\Event;
+        <div class="language-php highlighter-rouge">
+    <div class="prism-show-language">
+        <div class="prism-show-language-label">php</div>
+    </div>
+    <pre class="highlight language-php"><code class="language-php">use Symfony\Component\EventDispatcher\Event;
 
 class ArticleEvent extends Event
 {
@@ -482,6 +514,7 @@ class ArticleEvent extends Event
     public $url;
 }
 </code></pre>
+</div>
 
     </div>
     <div class="col-sm-6">
@@ -490,7 +523,11 @@ class ArticleEvent extends Event
     src/ArticleEvent.yml
 </p>
 
-        <pre><code class="language-yaml">ArticleEvent:
+        <div class="language-yaml highlighter-rouge">
+    <div class="prism-show-language">
+        <div class="prism-show-language-label">yaml</div>
+    </div>
+    <pre class="highlight language-yaml"><code class="language-php">ArticleEvent:
     exclusion_policy: NONE
     properties:
         id:
@@ -500,24 +537,30 @@ class ArticleEvent extends Event
         url:
             type: string
 </code></pre>
+</div>
 
+    </div>
+</div>
 
-        <p>
-            That's why we needed to add in <code>MyApp</code>:
-        </p>
+<p>
+    That's why we needed to add in <code>MyApp</code>:
+</p>
 
-        <p class="file">
+<p class="file">
     <i class="fa fa-file-code-o" aria-hidden="true"></i>
     src/MyApp.php
 </p>
 
 
-        <figure class="highlight"><pre><code class="language-php" data-lang="php">// Register serializer metadata
-$this['serializer.builder']-&gt;addMetadataDir(
+<div class="language- highlighter-rouge">
+    <div class="prism-show-language">
+        <div class="prism-show-language-label"></div>
+    </div>
+    <pre class="highlight language-"><code class="language-php">// Register serializer metadata
+$this['serializer.builder']->addMetadataDir(
     __DIR__,
     ''
-);</code></pre></figure>
-    </div>
+);</code></pre>
 </div>
 
 
@@ -526,17 +569,20 @@ $this['serializer.builder']-&gt;addMetadataDir(
 <div class="row">
     <div class="col-sm-6">
         <p>The rest api endpoint will be hit with:</p>
-        <pre class="command-line" data-prompt="$" data-output="2-200"><code class="language-bash">POST rest-api.php/api/articles
+        <div class="language-bash highlighter-rouge">
+            <pre class="command-line" data-prompt="$" data-output="2-200"><code class="language-bash">POST rest-api.php/api/articles
 
 HTTP/1.1 201 Created
 Content-Length: 2
 Content-Type: application/json
 
 42</code></pre>
+        </div>
     </div>
     <div class="col-sm-6">
         <p>Run the websocket server and push server with:</p>
-        <pre class="command-line" data-prompt="$" data-output="2-200"><code class="language-bash">php websocket-server.php
+        <div class="language-bash highlighter-rouge">
+            <pre class="command-line" data-prompt="$" data-output="2-200"><code class="language-bash">php websocket-server.php
 
 # Websocket server is starting
 [info] Initialization... []
@@ -553,10 +599,15 @@ Content-Type: application/json
 
 # Websocket server received an event from rest api
 [info] Push message event {"event":"article.created"}</code></pre>
+        </div>
     </div>
 </div>
 
         </main>
+        <div class="d-none d-lg-block col-lg-3">
+            <nav class="sticky-nav" id="toc">
+            </nav>
+        </div>
     </div>
 </div>
 
@@ -620,6 +671,8 @@ Content-Type: application/json
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
         <script src="/sandstone-doc/js/prism.js"></script>
+        <script src="/sandstone-doc/js/main.js"></script>
     </body>
 </html>

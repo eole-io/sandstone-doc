@@ -5,9 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Sandstone Edition</title>
+        <title>Sandstone | Sandstone Edition</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
         <link rel="stylesheet" href="/sandstone-doc/css/bootstrap4-sandstone.min.css">
         <link rel="stylesheet" href="/sandstone-doc/css/prism.css">
@@ -29,12 +30,12 @@
 </nav>
 
 
-<div class="container-fluid">
+<div class="container-fluid page-container">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-md-3 nav-left-container">
             <div class="sticky-nav">
                 <nav class="nav-left">
-    <h3 class="no-margin-top">Sandstone</h2>
+    <h3>Sandstone</h3>
 
     <ul class="nav flex-column">
         <li class="nav-item 
@@ -129,7 +130,7 @@
         </li>
     </ul>
 
-    <h3>Sandstone Edition</h2>
+    <h3>Sandstone Edition</h3>
 
 
     <ul class="nav flex-column">
@@ -152,16 +153,14 @@
             </a>
         </li>
     </ul>
-
-    <h3>Community</h2>
 </nav>
 
             </div>
         </div>
-        <main class="col-sm-9 col-lg-6">
-            <h2 class="no-margin-top">Installation</h2>
+        <main class="col-md-9 col-lg-6">
+            <h1>Sandstone Edition</h1>
 
-<p>Sandstone requires PHP 5.6+, ZMQ and php-zmq extension.</p>
+            <p>Sandstone requires PHP 5.6+, ZMQ and php-zmq extension.</p>
 
 <p>But the edition also has a Docker installation,
 so you don’t need to install PHP, ZMQ, php-zmq, mysql… but Docker.</p>
@@ -174,9 +173,9 @@ so you don’t need to install PHP, ZMQ, php-zmq, mysql… but Docker.</p>
 
 <h4 id="install-a-new-sandstone-project">Install a new Sandstone project</h4>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>composer create-project eole/sandstone-edition
-<span class="nb">cd </span>sandstone-edition/
-</code></pre>
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">composer create-project eole/sandstone-edition
+cd sandstone-edition/</code></pre>
 </div>
 
 <ul>
@@ -187,8 +186,8 @@ so you don’t need to install PHP, ZMQ, php-zmq, mysql… but Docker.</p>
 
 <p>Run the websocket server with:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>php bin<span class="se">\w</span>ebsocket-server
-</code></pre>
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">php bin\websocket-server</code></pre>
 </div>
 
 <p>Then go to the diagnostic page: <code class="highlighter-rouge">http://localhost/sandstone-edition/www/hello/world.html</code></p>
@@ -197,8 +196,8 @@ so you don’t need to install PHP, ZMQ, php-zmq, mysql… but Docker.</p>
 
 <p>Access to the <strong>Silex console</strong>:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>php bin/console
-</code></pre>
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">php bin/console</code></pre>
 </div>
 
 <h4 id="other-links">Other links</h4>
@@ -222,13 +221,13 @@ so you don’t need to install PHP, ZMQ, php-zmq, mysql… but Docker.</p>
 
 <p>This installation requires <strong>make</strong>, <strong>Docker</strong> and <strong>docker-compose</strong>.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># Install a new Sandstone project</span>
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$" data-output="1,4,5"><code class="language-bash"># Install a new Sandstone project
 curl -L https://github.com/eole-io/sandstone-edition/archive/dev.tar.gz | tar xz
-<span class="nb">cd </span>sandstone-edition-dev/
+cd sandstone-edition-dev/
 
-<span class="c"># Install and mount environment</span>
-make
-</code></pre>
+# Install and mount environment
+make</code></pre>
 </div>
 
 <p><em>See <a href="#about-makefile">About Makefile</a> section to learn more about Makefile commands.</em></p>
@@ -274,14 +273,14 @@ change all images with the ones in <code class="highlighter-rouge">docker/docker
 
 <p>Access to the <strong>Silex console</strong>:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>docker <span class="nb">exec</span> -ti sandstone-php /bin/bash -c <span class="s2">"php bin/console"</span>
-</code></pre>
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">docker exec -ti sandstone-php /bin/bash -c "php bin/console"</code></pre>
 </div>
 
 <p>Open a bash session to PHP Docker container:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>make bash
-</code></pre>
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">make bash</code></pre>
 </div>
 
 <h4 id="docker-default-ports">Docker default ports</h4>
@@ -295,6 +294,10 @@ change all images with the ones in <code class="highlighter-rouge">docker/docker
 </ul>
 
         </main>
+        <div class="d-none d-lg-block col-lg-3">
+            <nav class="sticky-nav" id="toc">
+            </nav>
+        </div>
     </div>
 </div>
 
@@ -358,6 +361,8 @@ change all images with the ones in <code class="highlighter-rouge">docker/docker
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
         <script src="/sandstone-doc/js/prism.js"></script>
+        <script src="/sandstone-doc/js/main.js"></script>
     </body>
 </html>
