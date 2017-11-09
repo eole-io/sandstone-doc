@@ -3,8 +3,6 @@ layout: page
 title: Sandstone Edition
 ---
 
-<h2 class="no-margin-top">Installation</h2>
-
 Sandstone requires PHP 5.6+, ZMQ and php-zmq extension.
 
 But the edition also has a Docker installation,
@@ -20,10 +18,10 @@ You may need to [install ZMQ and php-zmq on Linux]({{ site.baseurl }}/install-zm
 
 #### Install a new Sandstone project
 
-``` bash
-composer create-project eole/sandstone-edition
-cd sandstone-edition/
-```
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">composer create-project eole/sandstone-edition
+cd sandstone-edition/</code></pre>
+</div>
 
  - Create a database for your project.
  - Configure your environment in `config/environment-dev.php`.
@@ -31,9 +29,9 @@ cd sandstone-edition/
 
 Run the websocket server with:
 
-``` bash
-php bin\websocket-server
-```
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">php bin\websocket-server</code></pre>
+</div>
 
 Then go to the diagnostic page: `http://localhost/sandstone-edition/www/hello/world.html`
 
@@ -41,9 +39,9 @@ Then go to the diagnostic page: `http://localhost/sandstone-edition/www/hello/wo
 
 Access to the **Silex console**:
 
-``` bash
-php bin/console
-```
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">php bin/console</code></pre>
+</div>
 
 #### Other links
 
@@ -64,14 +62,14 @@ You should also access to:
 
 This installation requires **make**, **Docker** and **docker-compose**.
 
-``` bash
-# Install a new Sandstone project
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$" data-output="1,4,5"><code class="language-bash"># Install a new Sandstone project
 curl -L https://github.com/eole-io/sandstone-edition/archive/dev.tar.gz | tar xz
 cd sandstone-edition-dev/
 
 # Install and mount environment
-make
-```
+make</code></pre>
+</div>
 
 *See [About Makefile](#about-makefile) section to learn more about Makefile commands.*
 
@@ -110,15 +108,15 @@ You can now start to create your RestApi endpoints and websocket topics.
 
 Access to the **Silex console**:
 
-``` bash
-docker exec -ti sandstone-php /bin/bash -c "php bin/console"
-```
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">docker exec -ti sandstone-php /bin/bash -c "php bin/console"</code></pre>
+</div>
 
 Open a bash session to PHP Docker container:
 
-``` bash
-make bash
-```
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">make bash</code></pre>
+</div>
 
 #### Docker default ports
 

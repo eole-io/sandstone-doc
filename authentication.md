@@ -3,8 +3,6 @@ layout: page
 title: Authentication
 ---
 
-<h1 class="no-margin-top">Authentication</h1>
-
 If your application has users, you maybe need to provide them a way to authenticate
 their Rest API requests, and also their websocket connections.
 
@@ -323,9 +321,9 @@ by adding `symfony/security-bundle` in your dependencies.
 
 Just do:
 
-``` bash
-composer require symfony/security-bundle
-```
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">composer require symfony/security-bundle</code></pre>
+</div>
 
 Make an Api call, then you should see the new panel by profiling the new request.
 

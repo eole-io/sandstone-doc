@@ -3,10 +3,7 @@ layout: page
 title: Sandstone Edition Cookbook
 ---
 
-<h2 class="no-margin-top">Cookbook</h2>
-
-
-Once you have a running installation of Sandstone,
+Once you [installed a fresh edition of Sandstone]({{ site.baseurl }}/edition/get-started),
 you can start to build your real-time RestApi.
 
 That means creating API endpoints, websocket topics...
@@ -18,7 +15,7 @@ As Sandstone extends Silex, just create a controller class and a method, then mo
 
 Also, this edition allows to use **annotations** for routing.
 
-In **src/App/Controller/HelloController.php**:
+{% include file-title.html filename="src/App/Controller/HelloController.php" %}
 
 ``` php
 namespace App\Controller;
@@ -79,7 +76,7 @@ Under Sandstone, a topic has a name (i.e `chat/general`) and can be declared lik
 
 #### Creating the topic class
 
-In **src/App/Topic/ChatTopic.php**:
+{% include file-title.html filename="src/App/Topic/ChatTopic.php" %}
 
 ``` php
 namespace App\Topic;
@@ -105,7 +102,7 @@ class ChatTopic extends Topic
 
 #### Register the topic
 
-In **app/WebsocketApplication.php**:
+{% include file-title.html filename="app/WebsocketApplication.php" %}
 
 ``` php
 use App\Topic\ChatTopic;
@@ -172,7 +169,7 @@ Then just listen this event from a topic, and do something like broadcast a mess
 
 #### 1. Dispatch event from controller
 
-In **src/App/Controller/HelloController.php**:
+{% include file-title.html filename="src/App/Controller/HelloController.php" %}
 
 ``` php
 public function getHello($name)
@@ -186,7 +183,7 @@ public function getHello($name)
 
 #### 2. Mark the event to be forwarded
 
-In **app/RestApiApplication.php**:
+{% include file-title.html filename="app/RestApiApplication.php" %}
 
 ``` php
 use App\Event\HelloEvent;
@@ -206,7 +203,7 @@ It will listen and receive the event
 that has been serialized/deserialized through the Push server,
 from the RestApi thread to the websocket server thread.
 
-In **src/App/Topic/ChatTopic.php**:
+{% include file-title.html filename="src/App/Topic/ChatTopic.php" %}
 
 ``` php
 namespace App\Topic;
@@ -255,7 +252,7 @@ Up to you to create a `HelloEvent` class and **create serialization metadata**.
 *Related documentation*:
 
  - [Symfony EventSubscriber](http://symfony.com/doc/current/components/event_dispatcher.html#using-event-subscribers)
- - [Sandstone Topic class](https://eole-io.github.io/sandstone/examples/multichannel-chat.html)
+ - [Sandstone Topic class]({{ site.baseurl }}/examples/multichannel-chat.html)
  - [Serializer metadata Yaml reference](http://jmsyst.com/libs/serializer/master/reference/yml_reference)
 
 
@@ -270,7 +267,9 @@ Sandstone edition integrates Doctrine:
 
 #### Creating an entity
 
-Here using annotations. In **src/App/Entity/Article.php**:
+Here using annotations.
+
+{% include file-title.html filename="src/App/Entity/Article.php" %}
 
 ``` php
 namespace App\Entity;
@@ -316,9 +315,10 @@ If your entity is meant to be serialized, which happens in any of these cases:
  - rendered in json (or xml, yml...) to the RestApi user
  - sent to the websocket server from the rest api (forwarded)
 
-In **src/App/Resources/serializer/App.Entity.Article.yml**:
+{% include file-title.html filename="src/App/Resources/serializer/App.Entity.Article.yml" %}
 
-``` yml
+
+``` yaml
 App\Entity\Article:
     exclusion_policy: NONE
     properties:
@@ -334,9 +334,9 @@ App\Entity\Article:
 
 Use the Doctrine command:
 
-``` bash
-php bin/console orm:schema-tool:update --force
-```
+<div class="language-bash highlighter-rouge"><pre class="command-line" data-prompt="$">
+<code class="language-bash">php bin/console orm:schema-tool:update --force</code>
+</pre></div>
 
 #### Retrieve Repository from container
 
@@ -378,21 +378,15 @@ to let him send responses to a precise domain name.
 The edition integrates [jdesrosiers/silex-cors-provider](https://github.com/jdesrosiers/silex-cors-provider),
 so you just have to configure it:
 
-In **config/environment.php**, only serve `localhost` (if your front-end application is on `localhost`):
+{% include file-title.html filename="config/environment.php" %}
 
 ``` php
 return [
     'cors' => [
+        // only serve `localhost` (if your front-end application is on `localhost`)
         'cors.allowOrigin' => 'http://localhost',
-    ],
-];
-```
 
-or to serve **All clients**:
-
-``` php
-return [
-    'cors' => [
+        // or to serve **All clients**
         'cors.allowOrigin' => '*',
     ],
 ];

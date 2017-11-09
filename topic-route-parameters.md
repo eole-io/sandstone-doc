@@ -3,8 +3,6 @@ layout: page
 title: Topic route parameters
 ---
 
-<h1 class="no-margin-top">Topic route parameters</h1>
-
 Declaring a single websocket topic with Sandstone is like:
 
 ``` php

@@ -3,8 +3,6 @@ layout: page
 title: Full example of websocket application working with a RestApi
 ---
 
-<h1 class="no-margin-top">Full example</h1>
-
 <p>Example of a fully working rest api working together with a websocket server.</p>
 
 <p>
@@ -46,21 +44,25 @@ title: Full example of websocket application working with a RestApi
 
 <h2>Installation</h2>
 
-Create your composer.json:
+<p>
+    Create your composer.json:
+</p>
 
 {% include file-title.html filename="composer.json" %}
 {% include highlight-file.html filename="examples/full/composer.json" code="json" %}
 
-Then run <code>composer update</code>.
+<p>
+    Then run <code>composer update</code>.
+</p>
 
 
 <h2>Project structure</h2>
 
-<pre>Silex\Application</pre>
+<pre class="file">Silex\Application</pre>
 
 {% include arrow-up.html %}
 
-<pre>Eole\Sandstone\Application</pre>
+<pre class="file">Eole\Sandstone\Application</pre>
 
 {% include arrow-up.html %}
 
@@ -142,21 +144,24 @@ Then run <code>composer update</code>.
     <div class="col-sm-6">
         {% include file-title.html filename="src/ArticleEvent.yml" %}
         {% include highlight-file.html filename="examples/full/src/ArticleEvent.yml" code="yaml" %}
+    </div>
+</div>
 
-        <p>
-            That's why we needed to add in <code>MyApp</code>:
-        </p>
+<p>
+    That's why we needed to add in <code>MyApp</code>:
+</p>
 
-        {% include file-title.html filename="src/MyApp.php" %}
+{% include file-title.html filename="src/MyApp.php" %}
 
-        {% highlight php %}
-// Register serializer metadata
+<div class="language-{{ include.code }} highlighter-rouge">
+    <div class="prism-show-language">
+        <div class="prism-show-language-label">{{ include.code }}</div>
+    </div>
+    <pre class="highlight language-{{ include.code }}"><code class="language-php">// Register serializer metadata
 $this['serializer.builder']->addMetadataDir(
     __DIR__,
     ''
-);
-{% endhighlight %}
-    </div>
+);</code></pre>
 </div>
 
 
@@ -165,10 +170,14 @@ $this['serializer.builder']->addMetadataDir(
 <div class="row">
     <div class="col-sm-6">
         <p>The rest api endpoint will be hit with:</p>
-        <pre class="command-line" data-prompt="$" data-output="2-200"><code class="language-bash">{% include examples/full/curl.log %}</code></pre>
+        <div class="language-bash highlighter-rouge">
+            <pre class="command-line" data-prompt="$" data-output="2-200"><code class="language-bash">{% include examples/full/curl.log %}</code></pre>
+        </div>
     </div>
     <div class="col-sm-6">
         <p>Run the websocket server and push server with:</p>
-        <pre class="command-line" data-prompt="$" data-output="2-200"><code class="language-bash">{% include examples/full/websocket-server.log %}</code></pre>
+        <div class="language-bash highlighter-rouge">
+            <pre class="command-line" data-prompt="$" data-output="2-200"><code class="language-bash">{% include examples/full/websocket-server.log %}</code></pre>
+        </div>
     </div>
 </div>

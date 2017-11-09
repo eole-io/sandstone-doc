@@ -3,8 +3,6 @@ layout: page
 title: Under the hood
 ---
 
-<h1 class="no-margin-top">Under the hood</h1>
-
 Sandstone is built on a few other cool PHP libraries you may want to check documentation:
 
 - [Silex 2](http://silex.sensiolabs.org/) *for RestApi and application container ([Pimple](http://pimple.sensiolabs.org/))*

@@ -3,8 +3,6 @@ layout: page
 title: Push debug profiler
 ---
 
-<h1 class="no-margin-top">Push debug profiler</h1>
-
 Sandstone integrates a development tool, the push debug profiler.
 
 It logs all messages that has been sent to the websocket server

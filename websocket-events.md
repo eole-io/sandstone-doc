@@ -3,8 +3,6 @@ layout: page
 title: Listen to websocket events
 ---
 
-<h1 class="no-margin-top">Listen to websocket events</h1>
-
 At some point of your running websocket server,
 clients will connect and disconnect, and subscribe to a wamp topic to publish messages.
 

@@ -4,15 +4,21 @@ layout: base
 
 {% include nav-top.html %}
 
-<div class="container-fluid">
+<div class="container-fluid page-container">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-md-3 nav-left-container">
             <div class="sticky-nav">
                 {% include nav-left.html %}
             </div>
         </div>
-        <main class="col-sm-9 col-lg-6">
+        <main class="col-md-9 col-lg-6">
+            <h1>{{ page.title }}</h1>
+
             {{ content }}
         </main>
+        <div class="d-none d-lg-block col-lg-3">
+            <nav class="sticky-nav" id="toc">
+            </nav>
+        </div>
     </div>
 </div>

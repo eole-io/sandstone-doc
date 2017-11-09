@@ -3,8 +3,6 @@ layout: page
 title: Big picture
 ---
 
-<h1 class="no-margin-top">Big picture</h1>
-
 Sandstone runs a RestApi server and a Websocket server.
 Two stacks, running on differents processus.
 

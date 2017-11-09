@@ -1,9 +1,7 @@
 ---
 layout: page
-title: Sandstone | Websockets powered by PHP and Symfony
+title: Get started
 ---
-
-<h2 class="no-margin-top">Introduction</h2>
 
 If you want to build a PHP application with real-time stuff,
 this library can help you to use websockets in a structured application.
@@ -25,8 +23,9 @@ Sandstone needs:
 Sandstone is on composer ([eole/sandstone](https://packagist.org/packages/eole/sandstone)).
 Installation using composer:
 
-<pre class="command-line" data-prompt="$"><code class="language-bash">composer require eole/sandstone</code></pre>
-
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">composer require eole/sandstone</code></pre>
+</div>
 
 ## Usage
 

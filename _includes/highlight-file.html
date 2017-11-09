@@ -1,1 +1,6 @@
-<pre><code class="language-{{ include.code }}">{% include {{ include.filename }} %}</code></pre>
+<div class="language-{{ include.code }} highlighter-rouge">
+    <div class="prism-show-language">
+        <div class="prism-show-language-label">{{ include.code }}</div>
+    </div>
+    <pre class="highlight language-{{ include.code }}"><code class="language-php">{% include {{ include.filename }} %}</code></pre>
+</div>
