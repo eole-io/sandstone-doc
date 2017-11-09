@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Sandstone | Chat server with PHP and websockets</title>
+        <title>Chat server with PHP and websockets | Sandstone</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
@@ -153,6 +153,9 @@
             </a>
         </li>
     </ul>
+
+    <br />
+    <br /><!-- Yes, and... ?! I'm using two <br> to add some padding at the bottom, and that's it. End of story. -->
 </nav>
 
             </div>
@@ -289,7 +292,7 @@ to all subscribing clients on new subscriptions.</p>
 
 <p>This works the same way as Silex routes.</p>
 
-<blockquote>
+<blockquote data-level="info">
   <p><strong>Note</strong>: See more at <a href="/sandstone-doc/topic-route-parameters.html">Topic route parameters</a>
 to know how to retrieve topic route arguments.</p>
 </blockquote>
@@ -342,7 +345,7 @@ $websocketServer-&gt;run();
 <a href="http://autobahn.ws/js/reference_wampv1.html">Autobahn|JS</a>,
 which provides an implementation of the WAMP protocol.</p>
 
-<blockquote>
+<blockquote data-level="warning">
   <p><strong>Note</strong>:
 Be careful to use the <strong>0.8.x</strong> version of the library
 in order to work with WAMP <strong>v1</strong>.</p>

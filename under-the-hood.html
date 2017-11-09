@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Sandstone | Under the hood</title>
+        <title>Under the hood | Sandstone</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
@@ -153,6 +153,9 @@
             </a>
         </li>
     </ul>
+
+    <br />
+    <br /><!-- Yes, and... ?! I'm using two <br> to add some padding at the bottom, and that's it. End of story. -->
 </nav>
 
             </div>
@@ -300,7 +303,7 @@ $app-&gt;topic('chat/{channel}', function ($topicPattern, $arguments) {
 <p>Then when someone subscribes to the topic <code class="highlighter-rouge">chat/general</code> for the first time,
 this factory is called with arguments:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Array
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>Array
 (
     [topicPattern] =&gt; 'chat/general'
     [arguments] =&gt; Array

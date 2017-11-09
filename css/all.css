@@ -5,8 +5,8 @@ h4 {
     font-weight: 500;
 }
 h1, h2, h3, h4 {
-    margin-top: 2em;
-    margin-bottom: 0.75em;
+    margin-top: 2.5em;
+    margin-bottom: 1em;
 }
 main h1:first-child {
     margin-top: 0;
@@ -156,6 +156,13 @@ th {
     background-color: #f5f2f0;
 }
 
+blockquote.card-blockquote {
+    margin-bottom: 0;
+}
+blockquote.card-blockquote > :last-child {
+    margin-bottom: 0;
+}
+
 /**
  * toc
  */
@@ -173,6 +180,12 @@ nav[data-toggle='toc'] .nav {
   nav[data-toggle='toc'] .nav .nav {
     display: block;
   }
+}
+nav[data-toggle="toc"] .nav > li > a {
+    font-size: .9em;
+}
+nav[data-toggle="toc"] .nav .nav > li > a {
+    font-size: .8em;
 }
 nav[data-toggle="toc"] .nav > li > a:focus
 nav[data-toggle="toc"] .nav > .active:focus > a,

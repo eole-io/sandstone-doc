@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Sandstone | Sandstone Edition Cookbook</title>
+        <title>Sandstone Edition Cookbook | Sandstone</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
@@ -153,6 +153,9 @@
             </a>
         </li>
     </ul>
+
+    <br />
+    <br /><!-- Yes, and... ?! I'm using two <br> to add some padding at the bottom, and that's it. End of story. -->
 </nav>
 
             </div>
@@ -302,7 +305,7 @@ which is based on Wamp protocol.</p>
 </code></pre>
 </div>
 
-<blockquote>
+<blockquote data-level="warning">
   <p><strong>Note</strong>: You can’t use <code class="highlighter-rouge">-&gt;method('get')</code> or <code class="highlighter-rouge">-&gt;requireHttps()</code> for a topic route ;)</p>
 </blockquote>
 
@@ -353,8 +356,8 @@ then this event will be forwarded (i.e redisptached) over the <code class="highl
 </code></pre>
 </div>
 
-<blockquote>
-  <p><strong>Note</strong>: The <code class="highlighter-rouge">container</code> is passed to your controllers constructors
+<blockquote data-level="info">
+  <p><strong>Note</strong>: <code class="highlighter-rouge">$this-&gt;container</code> is passed to your controllers constructors
 if you use the <code class="highlighter-rouge">@SLX\Controller</code> annotation.</p>
 </blockquote>
 
@@ -374,7 +377,7 @@ private function registerUserProviders()
 </code></pre>
 </div>
 
-<blockquote>
+<blockquote data-level="info">
   <p><strong>Note</strong>: This must be done only in RestApi stack.
 If it’s done in websocket stack, the event will be redispatched infinitely to itself!</p>
 </blockquote>
@@ -426,14 +429,14 @@ class ChatTopic extends Topic implements EventSubscriberInterface
 </code></pre>
 </div>
 
-<blockquote>
+<blockquote data-level="info">
   <p><strong>Note</strong>: Sandstone automatically subscribes topics (to the EventDispatcher)
 that implement the <code class="highlighter-rouge">Symfony\Component\EventDispatcher\EventSubscriberInterface</code>.</p>
 </blockquote>
 
 <p>Up to you to create a <code class="highlighter-rouge">HelloEvent</code> class and <strong>create serialization metadata</strong>.</p>
 
-<blockquote>
+<blockquote data-level="warning">
   <p><strong>Note</strong>: You need to create serialization metadata for objects that are forwarded.
 It need to be serialized and deserialized around the Push server.</p>
 </blockquote>
@@ -615,6 +618,32 @@ in example when you develop a websocket topic.</p>
 Only use it in prod. Use <code class="highlighter-rouge">make</code> to remove optimization.</p>
 
 <p><code class="highlighter-rouge">make book</code>: Display help (make commands, urls to api, PHPMyAdmin…)</p>
+
+<pre class="command-line" data-prompt="$" data-output="2-999"><code class="language-bash">make book
+#
+# Default urls:
+#  http://0.0.0.0:8480/hello/world.html          Diagnostic page.
+#  http://0.0.0.0:8480/index-dev.php/api/hello   *hello world* route in **dev** mode.
+#  http://0.0.0.0:8480/api/hello                 *hello world* route in **prod** mode.
+#  http://0.0.0.0:8480/index-dev.php/_profiler/  Symfony web profiler (only dev mode).
+#  http://0.0.0.0:8481                           PHPMyAdmin (login: `root` / `root`).
+#  ws://0.0.0.0:8482                             Websocket server.
+#
+# Make commands:
+#  make                             Install application and run it
+#  make run                         Run application
+#  make bash                        Enter in php container
+#  make logs                        Display containers logs and errors
+#  make update                      rebuild containers, update composer dependencies...
+#  make restart_websocket_server    Reload websocket stack, i.e when code is updated
+#  make book                        Display this help
+#
+# See Sandstone edition cookbook:
+#  https://github.com/eole-io/sandstone-edition
+#
+# See Sandstone documentation:
+#  https://eole-io.github.io/sandstone
+#</code></pre>
 
         </main>
         <div class="d-none d-lg-block col-lg-3">

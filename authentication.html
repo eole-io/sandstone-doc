@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Sandstone | Authentication</title>
+        <title>Authentication | Sandstone</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
@@ -153,6 +153,9 @@
             </a>
         </li>
     </ul>
+
+    <br />
+    <br /><!-- Yes, and... ?! I'm using two <br> to add some padding at the bottom, and that's it. End of story. -->
 </nav>
 
             </div>
@@ -253,7 +256,7 @@ so authentication is optional unless I add a condition in my controllers.</p>
   <p>I also added <code class="highlighter-rouge">'http' =&gt; true</code> to allows basic authentication for the following example.</p>
 </blockquote>
 
-<blockquote>
+<blockquote data-level="info">
   <p><strong>Note</strong>: This example is based on Silex security documentation.
 See <a href="https://silex.symfony.com/doc/2.0/providers/security.html">Silex security</a>.</p>
 </blockquote>
@@ -299,7 +302,7 @@ Authorization: Basic YWRtaW46Zm9v
 </span></code></pre>
 </div>
 
-<blockquote>
+<blockquote data-level="info">
   <p>The string <code class="highlighter-rouge">YWRtaW46Zm9v</code> is the base64 encoded of <code class="highlighter-rouge">admin:foo</code>.
 See <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">Basic access authentication</a>.</p>
 </blockquote>
@@ -353,7 +356,7 @@ stateless and use oauth:</p>
 </code></pre>
 </div>
 
-<blockquote>
+<blockquote data-level="info">
   <p><strong>Note</strong>:
 See <a href="https://silex.symfony.com/doc/2.0/providers/security.html#stateless-authentication">Stateless Authentication</a>
 on Silex documentation.</p>
@@ -392,7 +395,7 @@ $app-&gt;post('/oauth/access-token', function (Request $request) use ($app) {
 </code></pre>
 </div>
 
-<blockquote>
+<blockquote data-level="warning">
   <p><strong>Note</strong>: Make the access token route <strong>outside</strong> the <code class="highlighter-rouge">api</code> firewall so that
 getting an access token is not behind OAuth security.
 In this example, the access token route prefix is <code class="highlighter-rouge">/oauth/</code>
@@ -408,7 +411,7 @@ It has an expiration time, so you have to get another one before it expires.</p>
 <p>Sandstone also uses refresh tokens. You then get also a refresh token
 you may store when you get an access token.</p>
 
-<blockquote>
+<blockquote data-level="info">
   <p>See <a href="https://oauth2.thephpleague.com/authorization-server/which-grant/">Which OAuth 2.0 grant should I implement?</a>
 from thephpleague oauth2 server documentation.</p>
 </blockquote>
@@ -474,9 +477,9 @@ Authorization: Bearer VBLQa98foR2dOSJpb9bugh00e1r7H74manwEhmbj
 
 <p>You’ll then see in your websocket server logs:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[info] Authentication... []
-[info] User logged. {"username":"alcalyn"}
-</code></pre>
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$" data-output="1-2"><code class="language-bash">[info] Authentication... []
+[info] User logged. {"username":"alcalyn"}</code></pre>
 </div>
 
 <h2 id="enable-the-security-panel-in-the-profiler">Enable the security panel in the profiler</h2>
@@ -600,7 +603,7 @@ application with OAuth.</p>
 </code></pre>
 </div>
 
-<blockquote>
+<blockquote data-level="info">
   <p>I use here AutobahnJS 0.8</p>
 </blockquote>
 

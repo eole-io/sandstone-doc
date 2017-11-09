@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Sandstone | Sandstone Edition</title>
+        <title>Sandstone Edition | Sandstone</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
@@ -153,6 +153,9 @@
             </a>
         </li>
     </ul>
+
+    <br />
+    <br /><!-- Yes, and... ?! I'm using two <br> to add some padding at the bottom, and that's it. End of story. -->
 </nav>
 
             </div>
@@ -192,7 +195,9 @@ cd sandstone-edition/</code></pre>
 
 <p>Then go to the diagnostic page: <code class="highlighter-rouge">http://localhost/sandstone-edition/www/hello/world.html</code></p>
 
-<p><i class="fa fa-check" aria-hidden="true"></i> The installation is done.</p>
+<blockquote data-level="success">
+  <p><i class="fa fa-check" aria-hidden="true"></i> The installation is done.</p>
+</blockquote>
 
 <p>Access to the <strong>Silex console</strong>:</p>
 
@@ -232,7 +237,7 @@ make</code></pre>
 
 <p><em>See <a href="#about-makefile">About Makefile</a> section to learn more about Makefile commands.</em></p>
 
-<blockquote>
+<blockquote data-level="warning">
   <p><strong>Note</strong>: Sometimes you’ll need to do either a
 <code class="highlighter-rouge">chown -R {your_user}:{your_group} .</code>
 or a
@@ -240,15 +245,17 @@ or a
 to make it work.</p>
 </blockquote>
 
-<blockquote>
-  <p><img src="raspberrypi.png" alt="Raspberry Pi" />
+<blockquote data-level="info">
+  <p><img src="/sandstone-doc/img/raspberrypi.png" alt="Raspberry Pi" />
 <strong>Note</strong>: There is also an ARMv7 environment
 to mount Sandstone on Raspberry Pi.</p>
 
   <p>Copy docker/docker-compose.arm.yml to docker-compose.override.yml
 to use arm docker images:</p>
 
-  <p><code class="highlighter-rouge">cp docker/docker-compose.arm.yml docker-compose.override.yml</code></p>
+  <div class="language-bash highlighter-rouge"><pre class="highlight"><code>cp docker/docker-compose.arm.yml docker-compose.override.yml
+</code></pre>
+  </div>
 
   <p>Or if you already have a docker-compose.override.yml,
 change all images with the ones in <code class="highlighter-rouge">docker/docker-compose.arm.yml</code>.</p>
@@ -256,7 +263,9 @@ change all images with the ones in <code class="highlighter-rouge">docker/docker
 
 <p>Then check your installation by going to the diagnostic page: http://0.0.0.0:8480/hello/world.html</p>
 
-<p>:heavy_check_mark: The installation is done.</p>
+<blockquote data-level="success">
+  <p><i class="fa fa-check" aria-hidden="true"></i> The installation is done.</p>
+</blockquote>
 
 <p>Docker runs the whole environment, the RestApi, the websocket server and PHPMyAdmin. You now have access to:</p>
 

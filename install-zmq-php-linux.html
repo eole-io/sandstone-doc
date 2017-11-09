@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Sandstone | Install ZMQ and php-zmq extension on Debian or Ubuntu</title>
+        <title>Install ZMQ and php-zmq extension on Debian or Ubuntu | Sandstone</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
@@ -153,6 +153,9 @@
             </a>
         </li>
     </ul>
+
+    <br />
+    <br /><!-- Yes, and... ?! I'm using two <br> to add some padding at the bottom, and that's it. End of story. -->
 </nav>
 
             </div>
@@ -167,6 +170,18 @@
 (May 2012)
 which installs ZeroMQ 2 on Ubuntu 11.10 and php 5.3.</p>
 
+<blockquote data-level="warning">
+  <p><strong>Note added on October 2017</strong>:
+Obviously, installing php ZMQ extension on PHP 7 and a recent install of Ubuntu
+can be achieved with only:</p>
+
+  <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get install php-zmq
+</code></pre>
+  </div>
+
+  <p>So try this before, and if you’re lucky, you won’t need to follow this procedure.</p>
+</blockquote>
+
 <h2 id="requirements">Requirements</h2>
 
 <p>Make sure you have all the packages:</p>
@@ -178,11 +193,10 @@ sudo apt-get install php7.0 php7.0-dev
 sudo apt-get install php5 php5-dev
 sudo apt-get install php php-dev</code></pre>
 
-<blockquote>
+<blockquote data-level="warning">
   <p><strong>Note</strong>:
 If <code class="highlighter-rouge">libsodium</code> is not found, try <code class="highlighter-rouge">libsodium-dev</code>.
-Check <a href="https://github.com/jonathanpmartins">Jonathan Prass Martins</a>’ gist to see how to install it:
-<a href="https://gist.github.com/jonathanpmartins/2510f38abee1e65c6d92">https://gist.github.com/jonathanpmartins/2510f38abee1e65c6d92</a></p>
+Check <a href="https://gist.github.com/jonathanpmartins/2510f38abee1e65c6d92">Jonathan Prass Martins’ gist</a> to see how to install it.</p>
 </blockquote>
 
 <h2 id="install-zeromq">Install ZeroMQ</h2>
@@ -195,7 +209,7 @@ make
 sudo make install
 sudo ldconfig</code></pre>
 
-<blockquote>
+<blockquote data-level="info">
   <p><strong>Note</strong>:
 Check the lastest tarball release here:
 <a href="http://download.zeromq.org/#ZeroMQ_4">http://download.zeromq.org/#ZeroMQ_4</a></p>
@@ -216,7 +230,9 @@ sudo make install</code></pre>
   <li>or in file <code class="highlighter-rouge">/etc/php/7.0/mods-available/zmq.ini</code>, then run <code class="highlighter-rouge">sudo phpenmod zmq</code></li>
 </ul>
 
-<p>Do a <code class="highlighter-rouge">sudo service apache2 restart</code></p>
+<p>Finally do:</p>
+
+<pre class="command-line" data-prompt="$"><code class="language-bash">sudo service apache2 restart</code></pre>
 
 <h2 id="check-that-its-well-installed">Check that it’s well installed</h2>
 
@@ -228,9 +244,13 @@ sudo make install</code></pre>
 </code></pre>
 </div>
 
-<p>And run the file with <code class="highlighter-rouge">php my-file.php</code>, and from your browser, you should see <code class="highlighter-rouge">bool(true)</code>.</p>
+<p>And run the file with</p>
 
-<p>You can also check the installed ZMQ version from phpinfo.</p>
+<pre class="command-line" data-prompt="$"><code class="language-bash">php my-file.php</code></pre>
+
+<p>you should see <code class="highlighter-rouge">bool(true)</code> from your browser.</p>
+
+<p>You can also check the installed ZMQ version from <code class="highlighter-rouge">phpinfo()</code>.</p>
 
         </main>
         <div class="d-none d-lg-block col-lg-3">
