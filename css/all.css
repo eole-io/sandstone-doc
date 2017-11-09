@@ -91,6 +91,7 @@ nav.nav-left .nav-item a span {
 }
 .jumbotron h1 {
     font-size: 3em;
+    margin: 0;
 }
 .jumbotron p {
     font-size: 1em;
