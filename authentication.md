@@ -93,6 +93,7 @@ so authentication is optional unless I add a condition in my controllers.
 
 > I also added `'http' => true` to allows basic authentication for the following example.
 
+{:data-level="info"}
 > **Note**: This example is based on Silex security documentation.
 > See [Silex security](https://silex.symfony.com/doc/2.0/providers/security.html).
 
@@ -137,6 +138,7 @@ Authorization: Basic YWRtaW46Zm9v
 }
 ```
 
+{:data-level="info"}
 > The string `YWRtaW46Zm9v` is the base64 encoded of `admin:foo`.
 > See [Basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication).
 
@@ -188,6 +190,7 @@ stateless and use oauth:
     ],
 ```
 
+{:data-level="info"}
 > **Note**:
 > See [Stateless Authentication](https://silex.symfony.com/doc/2.0/providers/security.html#stateless-authentication)
 > on Silex documentation.
@@ -226,6 +229,7 @@ $app->post('/oauth/access-token', function (Request $request) use ($app) {
 });
 ```
 
+{:data-level="warning"}
 > **Note**: Make the access token route **outside** the `api` firewall so that
 > getting an access token is not behind OAuth security.
 > In this example, the access token route prefix is `/oauth/`
@@ -241,6 +245,7 @@ It has an expiration time, so you have to get another one before it expires.
 Sandstone also uses refresh tokens. You then get also a refresh token
 you may store when you get an access token.
 
+{:data-level="info"}
 > See [Which OAuth 2.0 grant should I implement?](https://oauth2.thephpleague.com/authorization-server/which-grant/)
 > from thephpleague oauth2 server documentation.
 
@@ -308,10 +313,10 @@ websocket.connect('ws://localhost:8482?access_token=VBLQa98foR2dOSJpb9bugh00e1r7
 
 You'll then see in your websocket server logs:
 
-```
-[info] Authentication... []
-[info] User logged. {"username":"alcalyn"}
-```
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$" data-output="1-2"><code class="language-bash">[info] Authentication... []
+[info] User logged. {"username":"alcalyn"}</code></pre>
+</div>
 
 
 ## Enable the security panel in the profiler
@@ -432,4 +437,5 @@ Here is an example of websocket connection with an access token using Javascript
 ab.connect('ws://0.0.0.0:8482?access_token=L83pR5amKtRdaTo3hTBsaD7tp8tcWWCCsKgGMH9M')
 ```
 
+{:data-level="info"}
 > I use here AutobahnJS 0.8

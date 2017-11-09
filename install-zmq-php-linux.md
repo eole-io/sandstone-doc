@@ -10,6 +10,17 @@ This documentation has been strongly inspired from
 (May 2012)
 which installs ZeroMQ 2 on Ubuntu 11.10 and php 5.3.
 
+{:data-level="warning"}
+> **Note added on October 2017**:
+> Obviously, installing php ZMQ extension on PHP 7 and a recent install of Ubuntu
+> can be achieved with only:
+>
+> ``` bash
+> sudo apt-get install php-zmq
+> ```
+>
+> So try this before, and if you're lucky, you won't need to follow this procedure.
+
 
 ## Requirements
 
@@ -22,10 +33,10 @@ sudo apt-get install php7.0 php7.0-dev
 sudo apt-get install php5 php5-dev
 sudo apt-get install php php-dev</code></pre>
 
+{:data-level="warning"}
 > **Note**:
 > If `libsodium` is not found, try `libsodium-dev`.
-> Check [Jonathan Prass Martins](https://github.com/jonathanpmartins)' gist to see how to install it:
-> [https://gist.github.com/jonathanpmartins/2510f38abee1e65c6d92](https://gist.github.com/jonathanpmartins/2510f38abee1e65c6d92)
+> Check [Jonathan Prass Martins' gist](https://gist.github.com/jonathanpmartins/2510f38abee1e65c6d92) to see how to install it.
 
 ## Install ZeroMQ
 
@@ -37,6 +48,7 @@ make
 sudo make install
 sudo ldconfig</code></pre>
 
+{:data-level="info"}
 > **Note**:
 > Check the lastest tarball release here:
 > [http://download.zeromq.org/#ZeroMQ_4](http://download.zeromq.org/#ZeroMQ_4)
@@ -55,7 +67,9 @@ Then add the line `extension=zmq.so` in either:
 - your php.ini files (apache2 and cli ones)
 - or in file `/etc/php/7.0/mods-available/zmq.ini`, then run `sudo phpenmod zmq`
 
-Do a `sudo service apache2 restart`
+Finally do:
+
+<pre class="command-line" data-prompt="$"><code class="language-bash">sudo service apache2 restart</code></pre>
 
 
 ## Check that it's well installed
@@ -68,6 +82,10 @@ Just create a php file in your `www/` folder and add this:
 var_dump(class_exists('ZMQContext'));
 ```
 
-And run the file with `php my-file.php`, and from your browser, you should see `bool(true)`.
+And run the file with
 
-You can also check the installed ZMQ version from phpinfo.
+<pre class="command-line" data-prompt="$"><code class="language-bash">php my-file.php</code></pre>
+
+you should see `bool(true)` from your browser.
+
+You can also check the installed ZMQ version from `phpinfo()`.

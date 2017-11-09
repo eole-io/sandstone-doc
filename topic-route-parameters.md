@@ -11,6 +11,7 @@ $app->topic('chat/general', function ($topicPattern) {
 });
 ```
 
+{:data-level="info"}
 > **Note**: `$app` is your Sandstone application instance,
 > created with `$app = new Eole\Sandstone\Application()`.
 >
@@ -131,6 +132,7 @@ You can by example greeting new subscribers:
 
 Declaring a topic route is the same as declaring an http route.
 
+{:data-level="info"}
 > **Note**: See Silex documentation about route configuration:
 > [Routing Global Configuration](https://silex.symfony.com/index.php/doc/2.0/usage.html#global-configuration)
 

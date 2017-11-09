@@ -35,7 +35,8 @@ Run the websocket server with:
 
 Then go to the diagnostic page: `http://localhost/sandstone-edition/www/hello/world.html`
 
-<i class="fa fa-check" aria-hidden="true"></i> The installation is done.
+{:data-level="success"}
+> <i class="fa fa-check" aria-hidden="true"></i> The installation is done.
 
 Access to the **Silex console**:
 
@@ -73,27 +74,32 @@ make</code></pre>
 
 *See [About Makefile](#about-makefile) section to learn more about Makefile commands.*
 
+{:data-level="warning"}
 > **Note**: Sometimes you'll need to do either a
 > `chown -R {your_user}:{your_group} .`
 > or a
 > `chmod -R 777 var/*`
 > to make it work.
 
-> ![Raspberry Pi](raspberrypi.png)
+{:data-level="info"}
+> ![Raspberry Pi]({{ site.baseurl }}/img/raspberrypi.png)
 > **Note**: There is also an ARMv7 environment
 > to mount Sandstone on Raspberry Pi.
 >
 > Copy docker/docker-compose.arm.yml to docker-compose.override.yml
 > to use arm docker images:
 >
-> `cp docker/docker-compose.arm.yml docker-compose.override.yml`
+> ``` bash
+> cp docker/docker-compose.arm.yml docker-compose.override.yml
+> ```
 >
 > Or if you already have a docker-compose.override.yml,
 > change all images with the ones in `docker/docker-compose.arm.yml`.
 
 Then check your installation by going to the diagnostic page: http://0.0.0.0:8480/hello/world.html
 
-:heavy_check_mark: The installation is done.
+{:data-level="success"}
+> <i class="fa fa-check" aria-hidden="true"></i> The installation is done.
 
 Docker runs the whole environment, the RestApi, the websocket server and PHPMyAdmin. You now have access to:
 

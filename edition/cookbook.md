@@ -133,6 +133,7 @@ $this
 ;
 ```
 
+{:data-level="warning"}
 > **Note**: You can't use `->method('get')` or `->requireHttps()` for a topic route ;)
 
 #### Retrieve route arguments from topic name
@@ -178,7 +179,8 @@ public function getHello($name)
 }
 ```
 
-> **Note**: The `container` is passed to your controllers constructors
+{:data-level="info"}
+> **Note**: `$this->container` is passed to your controllers constructors
 > if you use the `@SLX\Controller` annotation.
 
 #### 2. Mark the event to be forwarded
@@ -194,6 +196,7 @@ private function registerUserProviders()
 }
 ```
 
+{:data-level="info"}
 > **Note**: This must be done only in RestApi stack.
 > If it's done in websocket stack, the event will be redispatched infinitely to itself!
 
@@ -241,11 +244,13 @@ class ChatTopic extends Topic implements EventSubscriberInterface
 }
 ```
 
+{:data-level="info"}
 > **Note**: Sandstone automatically subscribes topics (to the EventDispatcher)
 > that implement the `Symfony\Component\EventDispatcher\EventSubscriberInterface`.
 
 Up to you to create a `HelloEvent` class and **create serialization metadata**.
 
+{:data-level="warning"}
 > **Note**: You need to create serialization metadata for objects that are forwarded.
 > It need to be serialized and deserialized around the Push server.
 
@@ -414,3 +419,29 @@ in example when you develop a websocket topic.
 Only use it in prod. Use `make` to remove optimization.
 
 `make book`: Display help (make commands, urls to api, PHPMyAdmin...)
+
+<pre class="command-line" data-prompt="$" data-output="2-999"><code class="language-bash">make book
+#
+# Default urls:
+#  http://0.0.0.0:8480/hello/world.html          Diagnostic page.
+#  http://0.0.0.0:8480/index-dev.php/api/hello   *hello world* route in **dev** mode.
+#  http://0.0.0.0:8480/api/hello                 *hello world* route in **prod** mode.
+#  http://0.0.0.0:8480/index-dev.php/_profiler/  Symfony web profiler (only dev mode).
+#  http://0.0.0.0:8481                           PHPMyAdmin (login: `root` / `root`).
+#  ws://0.0.0.0:8482                             Websocket server.
+#
+# Make commands:
+#  make                             Install application and run it
+#  make run                         Run application
+#  make bash                        Enter in php container
+#  make logs                        Display containers logs and errors
+#  make update                      rebuild containers, update composer dependencies...
+#  make restart_websocket_server    Reload websocket stack, i.e when code is updated
+#  make book                        Display this help
+#
+# See Sandstone edition cookbook:
+#  https://github.com/eole-io/sandstone-edition
+#
+# See Sandstone documentation:
+#  https://eole-io.github.io/sandstone
+#</code></pre>

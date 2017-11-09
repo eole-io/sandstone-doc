@@ -75,6 +75,7 @@ $app->topic('chat/{channel}', function ($topicPattern) {
 
 This works the same way as Silex routes.
 
+{:data-level="info"}
 > **Note**: See more at [Topic route parameters]({{ site.baseurl }}/topic-route-parameters.html)
 > to know how to retrieve topic route arguments.
 
@@ -92,6 +93,7 @@ There is a Javascript library,
 [Autobahn|JS](http://autobahn.ws/js/reference_wampv1.html),
 which provides an implementation of the WAMP protocol.
 
+{:data-level="warning"}
 > **Note**:
 > Be careful to use the **0.8.x** version of the library
 > in order to work with WAMP **v1**.

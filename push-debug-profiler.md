@@ -25,6 +25,7 @@ $app->register(new Eole\Sandstone\Push\Debug\PushServerProfilerServiceProvider()
 
 where `$app` is your Sandstone instance.
 
+{:data-level="info"}
 > **Note**:
 > It assumes you have
 > [installed the Symfony profiler](https://github.com/silexphp/Silex-WebProfiler)
@@ -37,6 +38,7 @@ Once registered, a "Push" panel should appear in `/_profiler`.
 
 This panel logs all messages with their content, size, event class and event name.
 
+{:data-level="warning"}
 > **Note**:
 > Just refreshing an old panel won't work.
 > You must make a new request, then open it in with the profiler

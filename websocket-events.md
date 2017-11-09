@@ -99,6 +99,7 @@ class MyProvider implements EventListenerProviderInterface
 $app->register(new MyProvider());
 ```
 
+{:data-level="info"}
 > **Note**: `$app` is your Sandstone application instance,
 > created with `$app = new Eole\Sandstone\Application()`.
 >

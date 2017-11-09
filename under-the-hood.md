@@ -142,7 +142,7 @@ $app
 Then when someone subscribes to the topic `chat/general` for the first time,
 this factory is called with arguments:
 
-```
+``` php
 Array
 (
     [topicPattern] => 'chat/general'
