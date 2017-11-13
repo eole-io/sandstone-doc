@@ -11,3 +11,6 @@ bash: run
 
 publish: run
 	docker exec -ti sandstone-doc-jekyll /bin/bash -c docker/jekyll/publish.sh
+
+update_search_index: run
+	docker exec -ti sandstone-doc-jekyll /bin/bash -c "bundle exec jekyll algolia push"

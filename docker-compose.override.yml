@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+    jekyll:
+        environment:
+            ALGOLIA_API_KEY: 233fa2b1b101502d8c8be3923cd422f7

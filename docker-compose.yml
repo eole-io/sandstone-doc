@@ -4,6 +4,8 @@ services:
     jekyll:
         build: docker/jekyll
         container_name: sandstone-doc-jekyll
+        environment:
+            ALGOLIA_API_KEY: my_secret_algolia_key
         volumes:
             - .:/var/www/sandstone
         working_dir: /var/www/sandstone
