@@ -1,13 +1,29 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
     <a class="navbar-brand" href="{{ site.baseurl }}/">Sandstone</a>
 
-    <a
-        href="https://github.com/eole-io/sandstone"
-        class="github-button"
-        aria-label="Star eole-io/sandstone on GitHub"
-        data-count-aria-label="# stargazers on GitHub"
-        data-count-api="/repos/eole-io/sandstone#stargazers_count"
-        data-count-href="/eole-io/sandstone/stargazers"
-        data-style="mega"
-    >Star Sandstone</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" style="">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item iframe-github">
+                <a
+                    href="https://github.com/eole-io/sandstone"
+                    class="github-button"
+                    aria-label="Star eole-io/sandstone on GitHub"
+                    data-count-aria-label="# stargazers on GitHub"
+                    data-count-api="/repos/eole-io/sandstone#stargazers_count"
+                    data-count-href="/eole-io/sandstone/stargazers"
+                    data-style="mega"
+                >Star Sandstone</a>
+            </li>
+        </ul>
+        <form class="form-inline">
+            <div id="search-box">
+            </div>
+        </form>
+        <div id="hits" data-base-url="{{ site.baseurl }}">
+        </div>
+    </div>
 </nav>

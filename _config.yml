@@ -9,3 +9,8 @@ repository: eole-io/sandstone-doc
 
 plugins_dir:
    - jekyll-twitter-plugin
+   - algoliasearch-jekyll
+
+algolia:
+  application_id: '56WRZC44YH'
+  index_name:     'sandstone_documentation'

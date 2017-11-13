@@ -32,6 +32,28 @@ Then go to [http://localhost:4000/sandstone/](http://localhost:4000/sandstone/) 
 It will watch for file changes, so just refresh after your changes.
 
 
+## Reindex search
+
+Using docker:
+
+First create `docker-compose.override.yml` with content:
+
+``` yml
+version: '2'
+
+services:
+    jekyll:
+        environment:
+            ALGOLIA_API_KEY: xxx # My secret key from dashboard
+```
+
+Then:
+
+``` bash
+make update_search_index
+```
+
+
 ## Publish
 
 Using docker:

@@ -26,4 +26,5 @@ gem "minima"
 group :jekyll_plugins do
   gem 'github-pages'
   gem 'jekyll-twitter-plugin'
+  gem 'algoliasearch-jekyll', '~> 0.9.0'
 end

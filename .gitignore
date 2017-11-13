@@ -5,3 +5,5 @@ Gemfile.lock
 
 # Twitter Jekyll gem (last tweets cache)
 .tweet-cache/
+
+docker-compose.override.yml
