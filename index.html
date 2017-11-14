@@ -16,25 +16,116 @@
     </head>
     <body>
         <div class="jumbotron jumbotron-fluid">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-9 offset-sm-3">
-                <h1>Sandstone</h1>
-                <p>Silex RestApi with Websockets.</p>
+    <div class="container">
+        <h1>Sandstone</h1>
+        <p>Build a real time RestApi.</p>
 
-                <div class="jumbo-links">
-                    <a href="/sandstone-doc/get-started" class="btn btn-lg btn-primary">
-                        <i class="fa fa-book" aria-hidden="true"></i>
-                        Get started
-                    </a>
-                    <a href="https://github.com/eole-io/sandstone" class="btn btn-lg btn-primary btn-github">
-                        <i class="fa fa-github" aria-hidden="true"></i>
-                        Github
-                    </a>
-                </div>
-            </div>
+        <div class="jumbo-links">
+            <a href="/sandstone-doc/get-started" class="btn btn-lg btn-primary">
+                <i class="fa fa-book" aria-hidden="true"></i>
+                Get started
+            </a>
+            <a href="https://github.com/eole-io/sandstone" class="btn btn-lg btn-primary btn-github">
+                <i class="fa fa-github" aria-hidden="true"></i>
+                Github
+            </a>
         </div>
     </div>
+</div>
+
+<div class="container home-content">
+    <div class="row">
+        <div class="col-sm-10 offset-sm-1">
+            <p class="lead text-center">
+                Sandstone is a PHP microframework designed to build a RestApi
+                working together with a websocket server.
+            </p>
+        </div>
+    </div>
+
+    <h2>What can I do with Sandstone</h2>
+
+    <p>
+        <i>Microframework</i> means you can declare
+        RestApi endpoints and websocket topics in a minimalist way.
+    </p>
+    <p>
+        <i>Working together</i> means you can send push notifications to web client
+        even from RestApi controllers.
+    </p>
+
+    <p>
+        So you can mount real time RestApi, then:
+    </p>
+    <ul>
+        <li>Notify all web clients that a new article has just been created through the RestApi</li>
+        <li>Create a chat working with your RestApi</li>
+        <li>For a game server, broadcasting players moves as soon as someone played</li>
+    </ul>
+
+    <h2>How to get started</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Using microframework</h3>
+
+            <p>
+                If you're familiar with microframeworks (i.e expressJS, Python Flask, or PHP Silex),
+                You can build a Sandstone application with only a few PHP files.
+                See <a href="/sandstone-doc/examples/full">this full example</a>.
+            </p>
+            <p>
+                This way, you can create a fully customizable application.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h3>Using Sandstone edition</h3>
+
+            <p>
+                To create an application with already installed
+                a database, Symfony web profiler... in a Docker environment,
+                You may be insterested in the edition.
+            </p>
+            <p>
+                This way, you can quickly bootstrap a Sandstone application,
+                then be guided by the <a href="/sandstone-doc/edition/cookbook">cookbook</a>
+                to add endpoints, topics...
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="text-center">
+                <a href="/sandstone-doc/get-started" class="btn btn-lg btn-primary">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    Get started
+                </a>
+            </p>
+        </div>
+        <div class="col-md-6">
+            <p class="text-center">
+                <a href="/sandstone-doc/edition/get-started" class="btn btn-lg btn-primary">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    Get started with edition
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <h2>Working examples</h2>
+
+    <p>
+        <i class="fa fa-code" aria-hidden="true"></i>
+        <a href="/sandstone-doc/examples/full">Full example</a>
+    </p>
+    <p>
+        <i class="fa fa-code" aria-hidden="true"></i>
+        <a href="/sandstone-doc/examples/multichannel-chat">Chat example</a>
+    </p>
+    <p>
+        <i class="fa fa-code" aria-hidden="true"></i>
+        <a href="/sandstone-doc/authentication">Authenticated application</a>
+    </p>
 </div>
 
 
