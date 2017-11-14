@@ -139,6 +139,19 @@ nav.nav-left .nav-item a span {
 .jumbo-links > *:not(:first-child) {
     margin-left: 1em;
 }
+
+.home-content {
+    font-size: 1.25em;
+    margin-bottom: 5em;
+}
+.home-content .lead {
+    font-size: 1.25em;
+}
+.home-content .btn {
+    font-size: 1em;
+    padding: 1em;
+}
+
 .btn-github {
     background-color: #323131;
     border-color: rgba(0, 0, 0, 0.5);
