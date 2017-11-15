@@ -187,13 +187,11 @@
 <p>But the edition also has a Docker installation,
 so you don’t need to install PHP, ZMQ, php-zmq, mysql… but Docker.</p>
 
-<h3 id="normal-installation">Normal installation</h3>
+<h2 id="normal-installation">Normal installation</h2>
 
 <p>This requires PHP 5.6+, ZMQ, php-zmq extension, composer, and a database.</p>
 
 <p>You may need to <a href="/sandstone-doc/install-zmq-php-linux.html">install ZMQ and php-zmq on Linux</a>.</p>
-
-<h4 id="install-a-new-sandstone-project">Install a new Sandstone project</h4>
 
 <div class="language-bash highlighter-rouge">
     <pre class="command-line" data-prompt="$"><code class="language-bash">composer create-project eole/sandstone-edition
@@ -206,25 +204,15 @@ cd sandstone-edition/</code></pre>
   <li>Run <code class="highlighter-rouge">php bin/console orm:schema-tool:create</code> to initialize the database schema.</li>
 </ul>
 
-<p>Run the websocket server with:</p>
-
-<div class="language-bash highlighter-rouge">
-    <pre class="command-line" data-prompt="$"><code class="language-bash">php bin\websocket-server</code></pre>
-</div>
-
-<p>Then go to the diagnostic page: <code class="highlighter-rouge">http://localhost/sandstone-edition/www/hello/world.html</code></p>
+<p>Then go to the diagnostic page, something like: <code class="highlighter-rouge">http://localhost/sandstone-edition/www/hello/world.html</code></p>
 
 <blockquote data-level="success">
   <p><i class="fa fa-check" aria-hidden="true"></i> The installation is done.</p>
 </blockquote>
 
-<p>Access to the <strong>Silex console</strong>:</p>
+<h3 id="usage">Usage</h3>
 
-<div class="language-bash highlighter-rouge">
-    <pre class="command-line" data-prompt="$"><code class="language-bash">php bin/console</code></pre>
-</div>
-
-<h4 id="other-links">Other links</h4>
+<p>You should also access to:</p>
 
 <blockquote>
   <p>I will assume here that your webserver point to your application root with:</p>
@@ -232,16 +220,27 @@ cd sandstone-edition/</code></pre>
   <p><code class="highlighter-rouge">http://localhost/sandstone-edition/www/</code></p>
 </blockquote>
 
-<p>You should also access to:</p>
-
 <ul>
+  <li><code class="highlighter-rouge">http://localhost/sandstone-edition/www/hello/world.html</code> Diagnostic page.</li>
   <li><code class="highlighter-rouge">http://localhost/sandstone-edition/www/index-dev.php/api/hello</code> <em>hello world</em> route in <strong>dev</strong> mode.</li>
   <li><code class="highlighter-rouge">http://localhost/sandstone-edition/www/api/hello</code> <em>hello world</em> route in <strong>prod</strong> mode.</li>
   <li><code class="highlighter-rouge">http://localhost/sandstone-edition/www/index-dev.php/_profiler/</code> Symfony web profiler (only dev mode).</li>
   <li><code class="highlighter-rouge">ws://localhost:8482</code> Websocket server.</li>
 </ul>
 
-<h3 id="docker-installation">Docker installation</h3>
+<p>Access to the <strong>Silex console</strong>:</p>
+
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">php bin/console</code></pre>
+</div>
+
+<p>Run the websocket server with:</p>
+
+<div class="language-bash highlighter-rouge">
+    <pre class="command-line" data-prompt="$"><code class="language-bash">php bin/websocket-server</code></pre>
+</div>
+
+<h2 id="docker-installation">Docker installation</h2>
 
 <p>This installation requires <strong>make</strong>, <strong>Docker</strong> and <strong>docker-compose</strong>.</p>
 
@@ -264,27 +263,13 @@ or a
 to make it work.</p>
 </blockquote>
 
-<blockquote data-level="info">
-  <p><img src="/sandstone-doc/img/raspberrypi.png" alt="Raspberry Pi" />
-<strong>Note</strong>: There is also an ARMv7 environment
-to mount Sandstone on Raspberry Pi.</p>
-
-  <p>Copy docker/docker-compose.arm.yml to docker-compose.override.yml
-to use arm docker images:</p>
-
-  <div class="language-bash highlighter-rouge"><pre class="highlight"><code>cp docker/docker-compose.arm.yml docker-compose.override.yml
-</code></pre>
-  </div>
-
-  <p>Or if you already have a docker-compose.override.yml,
-change all images with the ones in <code class="highlighter-rouge">docker/docker-compose.arm.yml</code>.</p>
-</blockquote>
-
-<p>Then check your installation by going to the diagnostic page: http://0.0.0.0:8480/hello/world.html</p>
+<p>Then check your installation by going to the diagnostic page: <a href="http://0.0.0.0:8480/hello/world.html">http://0.0.0.0:8480/hello/world.html</a></p>
 
 <blockquote data-level="success">
   <p><i class="fa fa-check" aria-hidden="true"></i> The installation is done.</p>
 </blockquote>
+
+<h3 id="usage-1">Usage</h3>
 
 <p>Docker runs the whole environment, the RestApi, the websocket server and PHPMyAdmin. You now have access to:</p>
 
@@ -296,8 +281,6 @@ change all images with the ones in <code class="highlighter-rouge">docker/docker
   <li><a href="http://0.0.0.0:8481">http://0.0.0.0:8481</a> PHPMyAdmin (login: <code class="highlighter-rouge">root</code> / <code class="highlighter-rouge">root</code>).</li>
   <li><code class="highlighter-rouge">ws://0.0.0.0:8482</code> Websocket server.</li>
 </ul>
-
-<p>You can now start to create your RestApi endpoints and websocket topics.</p>
 
 <p>Access to the <strong>Silex console</strong>:</p>
 
@@ -320,6 +303,28 @@ change all images with the ones in <code class="highlighter-rouge">docker/docker
   <li><code class="highlighter-rouge">8481:http</code> PHPMyAdmin instance</li>
   <li><code class="highlighter-rouge">8482:ws</code> Websocket server</li>
 </ul>
+
+<h4 id="raspberry-pi-docker-environment">Raspberry Pi Docker environment</h4>
+
+<p><img src="/sandstone-doc/img/raspberrypi.png" alt="Raspberry Pi" />
+There is also an ARMv7 environment
+to mount Sandstone on Raspberry Pi.</p>
+
+<p>Copy docker/docker-compose.arm.yml to docker-compose.override.yml
+to use arm docker images:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>cp docker/docker-compose.arm.yml docker-compose.override.yml
+</code></pre>
+</div>
+
+<p>Or if you already have a docker-compose.override.yml,
+change all images with the ones in <code class="highlighter-rouge">docker/docker-compose.arm.yml</code>.</p>
+
+<h2 id="what-next">What next</h2>
+
+<p>If the diagnostic is good, your are now ready to build your real-time Rest Api.</p>
+
+<p>Create RestApi endpoints, websockets topics… <a href="/sandstone-doc/edition/cookbook">Continue to the cookbook</a>.</p>
 
         </main>
         <div class="d-none d-lg-block col-lg-3">
