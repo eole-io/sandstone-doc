@@ -1,4 +1,4 @@
-(function ($, Toc, instantsearch) {
+(function ($, Toc, instantsearch, _paq) {
     $(function () {
         initToc();
         initDocSearch();
@@ -19,6 +19,8 @@
     }
 
     function initDocSearch() {
+        let timeout = null;
+
         const baseUrl = $('#hits').data('baseUrl');
         const searchInputSelector = 'nav.navbar input.search';
         const search = instantsearch({
@@ -29,6 +31,16 @@
                 if (helper.state.query === '') {
                     document.querySelector('#hits').innerHTML = '';
                     return;
+                }
+
+                if (_paq) {
+                    if (null !== timeout) {
+                        clearTimeout(timeout);
+                    }
+
+                    timeout = setTimeout(function () {
+                        _paq.push(['trackSiteSearch', helper.state.query, false, false]);
+                    }, 250);
                 }
 
                 helper.search();
@@ -93,4 +105,4 @@
             }
         });
     }
-})(jQuery, Toc, instantsearch);
+})(jQuery, Toc, instantsearch, _paq);
