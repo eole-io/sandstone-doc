@@ -63,6 +63,104 @@
         <li>For a game server, broadcasting players moves as soon as someone played</li>
     </ul>
 
+    <h2>Live examples</h2>
+
+    <h3>Create a simple chat topic</h3>
+
+    <pre><code class="language-php">$app->topic('chat/demo', function ($topicPattern) {
+    return new class ($topicPattern) extends Topic
+    {
+        public function onPublish(WampConnection $conn, $topic, $event)
+        {
+            $this->broadcast([
+                'message' => $event,
+            ]);
+        }
+    };
+});</code></pre>
+
+    <div class="input-group input-group-chat">
+        <div class="input-group-prepend d-none d-md-flex">
+            <span class="input-group-text"><code>session.publish('chat/demo', '</code></span>
+        </div>
+        <input type="text" class="form-control chat-input" value="Hello world!">
+        <div class="input-group-append">
+            <span class="input-group-text d-none d-md-flex"><code>');</code></span>
+            <button class="btn btn-success" type="button">Send</button>
+        </div>
+    </div>
+
+    <div class="card bg-secondary text-white">
+        <div class="card-body">
+            <div class="live-output chat-output">
+            </div>
+        </div>
+    </div>
+
+    <h3>Dispatch push event on Rest API call</h3>
+
+    <p>
+        It is possible to dispatch an event from Rest Api controller,
+        and listen to it from a websocket topic for i.e broadcast it.
+    </p>
+
+    <p>See that live example of a simple Push event:</p>
+
+    <p class="file">RestApi stack</p>
+
+    <div class="language-php">
+        <pre class="highlight language-php"><code class="language-php">/**
+ * Dispatch push event on Rest API call
+ */
+$app->post('api/hello/{name}', function ($name) use ($app) {
+    $event = new HelloEvent();
+    $event->name = $name;
+
+    $app['dispatcher']->dispatch('event.hello', $event);
+
+    return new JsonResponse(['hello' => $name]);
+})->value('name', 'world');
+
+// Forward event to websocket process
+$app->forwardEventToPushServer('event.hello');</code></pre>
+    </div>
+
+    <p class="file">Websocket stack</p>
+
+    <div class="language-php">
+        <pre class="highlight language-php"><code class="language-php">/**
+ * Topic that broadcast push event
+ */
+$app->topic('push/demo', function ($topicPattern) {
+    return new class ($topicPattern) extends Topic implements EventSubscriberInterface
+    {
+        public static function getSubscribedEvents()
+        {
+            return [
+                'event.hello' => 'onHelloEvent',
+            ];
+        }
+
+        public function onHelloEvent(HelloEvent $event)
+        {
+            $this->broadcast([
+                'message' => "Someone called Rest Api /api/hello. Hello $event->name !",
+            ]);
+        }
+    };
+});</code></pre>
+    </div>
+
+    <button class="btn btn-success push-button post-api-hello" type="button">POST /api/hello</button>
+    <button class="btn btn-success push-button post-api-hello-sandstone" type="button">POST /api/hello/sandstone</button>
+
+    <div class="card bg-secondary text-white">
+        <div class="card-body">
+            <div class="live-output push-output">
+            </div>
+        </div>
+    </div>
+
     <h2>How to get started</h2>
 
     <div class="row">
@@ -127,6 +225,9 @@
         <a href="/sandstone-doc/authentication">Authenticated application</a>
     </p>
 </div>
+
+<script src="/sandstone-doc/js/autobahn.min.js"></script>
+<script src="/sandstone-doc/js/live-examples.js"></script>
 
 
         <footer>

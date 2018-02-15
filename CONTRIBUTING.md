@@ -76,3 +76,13 @@ Or from raw installation:
 
 Full publish documentation script (from a blank folder):
 see [docker/jekyll/publish.sh](docker/jekyll/publish.sh) as an example.
+
+
+## Live examples
+
+Live examples needs a server with
+[eole-io/sandstone-doc-live](https://github.com/eole-io/sandstone-doc-live)
+installed and running.
+
+You can rely one the production one, or, to edit it, install a local instance (easily with Docker)
+and use it by setting your hosts in `js/live-examples.js` (bottom of the file).
