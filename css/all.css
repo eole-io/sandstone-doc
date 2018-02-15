@@ -335,3 +335,22 @@ input.form-control.search {
     height: 1.3em;
     margin-bottom: - 0.3em;
 }
+
+.input-group-chat {
+    margin-bottom: 1em;
+}
+.input-group-chat .input-group-text {
+    font-size: 1em;
+}
+.chat-input {
+    font-size: 1em;
+    font-family: monospace;
+}
+.live-output {
+    height: 6em;
+    overflow-y: auto;
+    font-family: monospace;
+}
+.push-button {
+    margin: 0 .5em .5em 0;
+}
