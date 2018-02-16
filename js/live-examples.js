@@ -63,13 +63,16 @@ window.addEventListener('load', function () {
     };
 
     // Mock
-    const interface = faked();
+    //const interface = faked();
 
     // Local instance (https://github.com/eole-io/sandstone-doc-live)
     //const interface = live('ws://0.0.0.0:25569', 'http://0.0.0.0:8480', 'ws://0.0.0.0:25570');
 
     // Production instance
     //const interface = live('ws://alcalyn.tru.io:25569', 'http://alcalyn.tru.io:8480', 'ws://alcalyn.tru.io:25570');
+
+    // Production instance TLS
+    const interface = live('wss://alcalyn.tru.io:26569', 'https://alcalyn.tru.io:9480', 'wss://alcalyn.tru.io:26570');
 
     document.querySelector('.input-group-chat button').addEventListener('click', interface.chatSend);
 
