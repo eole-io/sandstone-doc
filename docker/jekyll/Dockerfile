@@ -1,7 +1,7 @@
 FROM ruby:2
 
 RUN apt-get update && \
-    apt-get install locales && \
+    apt-get install -y locales && \
     curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get install -y nodejs && \
     locale-gen en_US.UTF-8 && \
