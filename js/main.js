@@ -105,4 +105,4 @@
             }
         });
     }
-})(jQuery, Toc, instantsearch, _paq);
+})(jQuery, Toc, instantsearch, ('undefined' !== typeof _paq ? _paq : false));
