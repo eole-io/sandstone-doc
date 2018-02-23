@@ -23,7 +23,7 @@ git commit -m "Publish"
 echo "---"
 echo "Password: generate access token from: https://github.com/settings/tokens"
 echo "---"
-git push -f origin gh-pages
+git push origin gh-pages
 cd /
 
 rm -fr /tmp/sandstone /tmp/sandstone-build

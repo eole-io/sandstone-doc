@@ -336,6 +336,7 @@ input.form-control.search {
     margin-bottom: - 0.3em;
 }
 
+/* Live examples */
 .input-group-chat {
     margin-bottom: 1em;
 }
@@ -353,4 +354,10 @@ input.form-control.search {
 }
 .push-button {
     margin: 0 .5em .5em 0;
+}
+@media (max-width: 768px) {
+    .push-button {
+        display: block;
+        width: 100%;
+    }
 }
