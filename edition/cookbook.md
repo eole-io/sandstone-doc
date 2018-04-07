@@ -102,17 +102,17 @@ class ChatTopic extends Topic
 
 #### Register the topic
 
-{% include file-title.html filename="app/WebsocketApplication.php" %}
+{% include file-title.html filename="src/App/AppWebsocketProvider.php" %}
 
 ``` php
 use App\Topic\ChatTopic;
 
-private function registerUserProviders()
-{
-    $this->topic('chat/{channel}', function ($topicPattern) {
-        return new ChatTopic($topicPattern);
-    });
-}
+    public function register(Container $app)
+    {
+        $app->topic('chat/{channel}', function ($topicPattern) {
+            return new ChatTopic($topicPattern);
+        });
+    }
 ```
 
 Then you can now subscribe to `chat/general`, `chat/private`, `chat/whatever`, ...
