@@ -292,19 +292,24 @@ class ChatTopic extends Topic
 
 <p class="file">
     <i class="fa fa-file-code-o" aria-hidden="true"></i>
-    app/WebsocketApplication.php
+    src/App/AppWebsocketProvider.php
 </p>
 
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>use App\Topic\ChatTopic;
 
-private function registerUserProviders()
-{
-    $this-&gt;topic('chat/{channel}', function ($topicPattern) {
-        return new ChatTopic($topicPattern);
-    });
-}
+    public function register(Container $app)
+    {
+        $app-&gt;topic('chat/{channel}', function ($topicPattern) {
+            return new ChatTopic($topicPattern);
+        });
+    }
 </code></pre>
 </div>
+
+<blockquote data-level="warning">
+  <p><strong>Note</strong>: Don’t forget to restart websocket server when editing topics.
+You can run <code class="highlighter-rouge">make restart_websocket_server</code> if you use Docker.</p>
+</blockquote>
 
 <p>Then you can now subscribe to <code class="highlighter-rouge">chat/general</code>, <code class="highlighter-rouge">chat/private</code>, <code class="highlighter-rouge">chat/whatever</code>, …</p>
 

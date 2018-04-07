@@ -4,8 +4,12 @@ window.addEventListener('load', function () {
             chatSend: () => {
                 const message = document.querySelector('input.chat-input').value;
 
-                document.querySelector('input.chat-input').value = '';
-                document.querySelector('.chat-output').innerHTML = message + '<br>' + document.querySelector('.chat-output').innerHTML;
+                if ('' === message) {
+                    return;
+                }
+
+                chatClear();
+                chatDisplay(message);
             },
 
             pushPost: (name) => {
@@ -13,9 +17,7 @@ window.addEventListener('load', function () {
                     name = 'world';
                 }
 
-                const message = 'Someone called Rest Api /api/hello. Hello ' + name + ' !'
-
-                document.querySelector('.push-output').innerHTML = message + '<br>' + document.querySelector('.push-output').innerHTML;
+                pushDisplay('Someone called Rest Api /api/hello. Hello ' + name + ' !');
             },
         }
     };
@@ -27,13 +29,13 @@ window.addEventListener('load', function () {
             chatSession = session;
 
             session.subscribe('chat/demo', function (topic, event) {
-                document.querySelector('.chat-output').innerHTML = event.message + '<br>' + document.querySelector('.chat-output').innerHTML;
+                chatDisplay(event.message);
             });
         }
 
         function onPushSessionOpen(session) {
             session.subscribe('push/demo', function (topic, event) {
-                document.querySelector('.push-output').innerHTML = event.message + '<br>' + document.querySelector('.push-output').innerHTML;
+                pushDisplay(event.message);
             });
         }
 
@@ -46,8 +48,14 @@ window.addEventListener('load', function () {
 
         return {
             chatSend: () => {
-                chatSession.publish('chat/demo', document.querySelector('input.chat-input').value);
-                document.querySelector('input.chat-input').value = '';
+                const message = document.querySelector('input.chat-input').value;
+
+                if ('' === message) {
+                    return;
+                }
+
+                chatSession.publish('chat/demo', message);
+                chatClear();
             },
 
             pushPost: (name) => {
@@ -75,8 +83,25 @@ window.addEventListener('load', function () {
     const interface = live('wss://alcalyn.tru.io:26569', 'https://alcalyn.tru.io:9480', 'wss://alcalyn.tru.io:26570');
 
     document.querySelector('.input-group-chat button').addEventListener('click', interface.chatSend);
+    document.querySelector('.input-group-chat .chat-input').addEventListener('keypress', e => {
+        if (13 === e.keyCode) {
+            interface.chatSend();
+        }
+    });
 
     document.querySelector('.post-api-hello').addEventListener('click', () => interface.pushPost());
     document.querySelector('.post-api-hello-sandstone').addEventListener('click', () => interface.pushPost('sandstone'));
 
+    function chatDisplay(message) {
+        document.querySelector('.chat-output').innerHTML = '<br>' + document.querySelector('.chat-output').innerHTML;
+        document.querySelector('.chat-output').innerText = message + document.querySelector('.chat-output').innerText;
+    }
+
+    function chatClear() {
+        document.querySelector('input.chat-input').value = '';
+    }
+
+    function pushDisplay(message) {
+        document.querySelector('.push-output').innerHTML = message + '<br>' + document.querySelector('.push-output').innerHTML;
+    }
 });

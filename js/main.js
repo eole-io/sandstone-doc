@@ -1,4 +1,8 @@
-(function ($, Toc, instantsearch, _paq) {
+/* global _paq */
+// Cannot pass _paq as argument
+// because at this time it's a temporary array
+
+(function ($, Toc, instantsearch) {
     $(function () {
         initToc();
         initDocSearch();
@@ -31,16 +35,6 @@
                 if (helper.state.query === '') {
                     document.querySelector('#hits').innerHTML = '';
                     return;
-                }
-
-                if (_paq) {
-                    if (null !== timeout) {
-                        clearTimeout(timeout);
-                    }
-
-                    timeout = setTimeout(function () {
-                        _paq.push(['trackSiteSearch', helper.state.query, false, false]);
-                    }, 250);
                 }
 
                 helper.search();
@@ -91,6 +85,17 @@
             })
         );
 
+        if ('undefined' !== typeof _paq) {
+            search.addWidget(
+                instantsearch.widgets.analytics({
+                    delay: 250,
+                    pushFunction: function (formattedParameters, state, results) {
+                        _paq.push(['trackSiteSearch', state.query, false, results.nbHits]);
+                    }
+                })
+            );
+        }
+
         search.start();
     }
 
@@ -105,4 +110,4 @@
             }
         });
     }
-})(jQuery, Toc, instantsearch, ('undefined' !== typeof _paq ? _paq : false));
+})(jQuery, Toc, instantsearch);
