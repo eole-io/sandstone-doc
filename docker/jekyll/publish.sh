@@ -14,7 +14,7 @@ git config --global user.email "julien.maulny@protonmail.com"
 git config --global user.name "Alcalyn"
 
 git fetch origin
-git checkout gh-pages
+git checkout origin/gh-pages
 rm -fr *
 mv /tmp/sandstone-build/* .
 rm Gemfile Gemfile.lock README.md
