@@ -115,6 +115,10 @@ use App\Topic\ChatTopic;
     }
 ```
 
+{:data-level="warning"}
+> **Note**: Don't forget to restart websocket server when editing topics.
+> You can run `make restart_websocket_server` if you use Docker.
+
 Then you can now subscribe to `chat/general`, `chat/private`, `chat/whatever`, ...
 
 Sandstone `Topic` class extends `Ratchet\Wamp\Topic`,
