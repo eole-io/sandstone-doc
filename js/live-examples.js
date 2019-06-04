@@ -80,7 +80,7 @@ window.addEventListener('load', function () {
     //const interface = live('ws://alcalyn.nsupdate.info:25569', 'http://alcalyn.nsupdate.info:8480', 'ws://alcalyn.nsupdate.info:25570');
 
     // Production instance TLS
-    const interface = live('wss://alcalyn.nsupdate.info:26569', 'https://alcalyn.nsupdate.info:9480', 'wss://alcalyn.nsupdate.info:26570');
+    const interface = live('wss://sandstone-doc-live.alcalyn.app/websocket/chat', 'https://sandstone-doc-live.alcalyn.app', 'wss://sandstone-doc-live.alcalyn.app/websocket/push');
 
     document.querySelector('.input-group-chat button').addEventListener('click', interface.chatSend);
     document.querySelector('.input-group-chat .chat-input').addEventListener('keypress', e => {
